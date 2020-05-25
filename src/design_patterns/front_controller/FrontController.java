@@ -6,8 +6,9 @@ public class FrontController {
     public static void main(String[] args) {
         try (Scanner urlScanner = new Scanner(System.in)){
             while (urlScanner.hasNext()){
+                String url = urlScanner.nextLine();
                 Runnable runnable = () -> {
-                    new DispatcherServlet().process(urlScanner.nextLine());
+                    new DispatcherServlet().process(url);
                 };
                 new Thread(runnable).start();
             }
