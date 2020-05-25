@@ -1,0 +1,1 @@
+package interview.core.oop.polimorphizm.staticPoli;

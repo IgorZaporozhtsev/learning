@@ -1,0 +1,1 @@
+package Java8.anonym_class;
