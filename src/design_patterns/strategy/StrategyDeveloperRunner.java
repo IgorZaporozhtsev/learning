@@ -11,6 +11,7 @@ public class StrategyDeveloperRunner {
 
 
 class Developer{
+
   Activity activity;
 
   public void setActivity(Activity activity){

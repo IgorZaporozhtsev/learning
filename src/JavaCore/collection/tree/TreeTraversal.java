@@ -34,11 +34,11 @@ public class TreeTraversal {
             this.value = value;
         }
 
-        public int sum(){
+        public int sum() {
             int sum = value;
 
             if (left != null){
-                sum += left.sum();
+                sum += left.sum(); //рекурсивно вызываем сумму на каждом ребре
             }
 
             if (right != null){
