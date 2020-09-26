@@ -76,41 +76,17 @@ class Day {
         this.offerName = offerName;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getValue() {
-        return value;
     }
 
     public void setValue(int value) {
         this.value = value;
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public String getOfferName() {
-        return offerName;
-    }
-
-    public void setOfferName(String offerName) {
-        this.offerName = offerName;
-    }
-
     @Override
     public String toString() {
-        return "Day_1{" +
+        return "Day{" +
             "name='" + name + '\'' +
             ", value=" + value +
             ", count=" + count +
