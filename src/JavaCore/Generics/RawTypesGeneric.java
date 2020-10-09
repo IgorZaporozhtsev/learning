@@ -6,7 +6,7 @@ import java.util.List;
 
 public class RawTypesGeneric {
     public static void main(String[] args) {
-        SomeType someType = new SomeType();
+        SomeType someType = new SomeType();       // создали без generic
         List<String> list = Arrays.asList("value");
         someType.test(list);
     }
