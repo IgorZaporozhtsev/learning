@@ -6,7 +6,7 @@ public class ResolveGenericProblem {
         BoxT<String> s = new BoxT();
 
         b.setItem(new Integer(5));
-        b.setItem("Hello");             //ОШИБКА компиляции, обьект ожидает String
+        //b.setItem("Hello");             //ОШИБКА компиляции, обьект ожидает String
 
     }
 }
