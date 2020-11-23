@@ -25,10 +25,10 @@ class Printer implements PrinterInterface{
 }
 
 
-class QuotesDecarator implements PrinterInterface{
+class QuotesDecorator implements PrinterInterface {
     PrinterInterface component;
 
-    public QuotesDecarator(PrinterInterface component) {
+    public QuotesDecorator(PrinterInterface component) {
         this.component = component;
     }
 
