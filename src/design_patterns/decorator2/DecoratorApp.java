@@ -2,7 +2,7 @@ package design_patterns.decorator2;
 
 public class DecoratorApp {
     public static void main(String[] args) {
-        PrinterInterface printerInterface = new Printer("Привет");
+        PrinterInterface printerInterface = new QuotesDecorator(new Printer("Привет"));
         printerInterface.print();
     }
 }
@@ -20,7 +20,7 @@ class Printer implements PrinterInterface{
 
     @Override
     public void print() {
-        System.out.println(value);
+        System.out.print(value);
     }
 }
 
@@ -34,6 +34,8 @@ class QuotesDecorator implements PrinterInterface {
 
     @Override
     public void print() {
+        System.out.print("\"");
         component.print();
+        System.out.print("\"");
     }
 }
