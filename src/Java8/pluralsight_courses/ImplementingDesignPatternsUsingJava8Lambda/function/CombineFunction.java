@@ -1,4 +1,4 @@
-package Java8.design_patterns_course.function;
+package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.function;
 
 public class CombineFunction {
     public static void main(String[] args) {

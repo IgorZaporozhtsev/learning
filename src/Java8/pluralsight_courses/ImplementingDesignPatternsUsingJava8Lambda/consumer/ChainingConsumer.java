@@ -1,4 +1,4 @@
-package Java8.design_patterns_course.consumer;
+package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.consumer;
 
 public class ChainingConsumer {
     public static void main(String[] args) {

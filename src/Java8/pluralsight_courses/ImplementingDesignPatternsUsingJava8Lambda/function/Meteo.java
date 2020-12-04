@@ -1,7 +1,7 @@
-package Java8.design_patterns_course.function;
+package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.function;
 
 public class Meteo {
-    private int temperature;
+    private final int temperature;
 
     public Meteo(int temperature) {
         this.temperature = temperature;

@@ -1,4 +1,4 @@
-package Java8.design_patterns_course.predicate;
+package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.predicate;
 
 import java.util.Objects;
 

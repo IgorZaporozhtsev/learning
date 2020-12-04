@@ -1,6 +1,6 @@
-package Java8.design_patterns_course.comparator;
+package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.comparator;
 
-import Java8.design_patterns_course.function.Function;
+import Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.function.Function;
 
 import java.util.Objects;
 
