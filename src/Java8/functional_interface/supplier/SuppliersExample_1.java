@@ -1,6 +1,6 @@
 package Java8.functional_interface.supplier;
 
-import Java8.prepared_data.HobbyStream;
+import Java8.prepared_data.Hobby;
 import Java8.prepared_data.HobbyType;
 import Java8.prepared_data.PersonStream;
 
@@ -19,9 +19,9 @@ public class SuppliersExample_1 {
     }
 
     public static PersonStream generatePersonStream() {
-        HobbyStream chessHobby = new HobbyStream("chess", 7, HobbyType.INTELLIGENCE);
+        Hobby chessHobby = new Hobby("chess", 7, HobbyType.INTELLIGENCE);
 
-        List<HobbyStream> hobbies = new ArrayList<>();
+        List<Hobby> hobbies = new ArrayList<>();
         hobbies.add(chessHobby);
 
         return new PersonStream("Rick", "Rickerson", "ingenneer", 43, hobbies);
