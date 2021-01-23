@@ -2,12 +2,12 @@ package Java8.prepared_data;
 
 import java.util.Objects;
 
-public class HobbyStream {
+public class Hobby {
     String name;
     int yearsSpent;
     HobbyType types;
 
-    public HobbyStream(String name, int yearsSpent, HobbyType types) {
+    public Hobby(String name, int yearsSpent, HobbyType types) {
         this.name = name;
         this.yearsSpent = yearsSpent;
         this.types = types;
@@ -41,7 +41,7 @@ public class HobbyStream {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HobbyStream hobby = (HobbyStream) o;
+        Hobby hobby = (Hobby) o;
         return yearsSpent == hobby.yearsSpent &&
             Objects.equals(name, hobby.name) &&
             Objects.equals(types, hobby.types);
