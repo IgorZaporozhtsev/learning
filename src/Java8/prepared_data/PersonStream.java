@@ -8,10 +8,10 @@ public class PersonStream {
     String last_name;
     String profession;
     int age;
-    List<HobbyStream> hobbies;
+    List<Hobby> hobbies;
 
 
-    public PersonStream(String first_name, String last_name, String profession, int age, List<HobbyStream> hobbies) {
+    public PersonStream(String first_name, String last_name, String profession, int age, List<Hobby> hobbies) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.profession = profession;
@@ -51,11 +51,11 @@ public class PersonStream {
         this.age = age;
     }
 
-    public List<HobbyStream> getHobbies() {
+    public List<Hobby> getHobbies() {
         return hobbies;
     }
 
-    public void setHobbies(List<HobbyStream> hobbies) {
+    public void setHobbies(List<Hobby> hobbies) {
         this.hobbies = hobbies;
     }
 
