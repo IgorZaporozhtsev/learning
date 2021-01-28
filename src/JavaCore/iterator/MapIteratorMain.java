@@ -15,7 +15,7 @@ public class MapIteratorMain {
 
         //EntrySet
         //KeySet
-
+/*
         Iterator<String> stringIterator = popOfCities.keySet().iterator();
 
         System.out.println(popOfCities.keySet());
@@ -30,8 +30,9 @@ public class MapIteratorMain {
             System.out.println("finally: " + popOfCities.entrySet());
         }
 
-/*
+*/
         Iterator<Map.Entry<String, String>> stringIterator = popOfCities.entrySet().iterator();
+
         while (stringIterator.hasNext()){
             Map.Entry<String, String> entry = stringIterator.next();
 
@@ -42,6 +43,6 @@ public class MapIteratorMain {
             System.out.println("Value: " + entry.getValue());
             System.out.println("----------");
         }
-*/
+
     }
 }
