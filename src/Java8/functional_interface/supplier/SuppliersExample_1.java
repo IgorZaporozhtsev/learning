@@ -12,9 +12,20 @@ public class SuppliersExample_1 {
     public static void main(String[] args) {
         PersonStream person = generatePersonStream();
         show(personStream -> System.out.println(person.getFirst_name()), person);
+
+
+        /*
+        //its same as we use method show below
+
+        Consumer<PersonStream> personStreamConsumer = personStream -> System.out.println(person.getFirst_name());
+        personStreamConsumer.accept(person);
+
+        */
     }
 
+
     private static void show(Consumer<PersonStream> personStreamConsumer, PersonStream person) {
+        personStreamConsumer.accept(person);
         personStreamConsumer.andThen(personStreamConsumer).accept(person);
     }
 
