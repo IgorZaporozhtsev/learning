@@ -5,64 +5,12 @@ import java.util.*;
 public class MapSortList {
     public static void main(String[] args) {
         List<Integer> ids = new ArrayList<>();
-        ids.add(1);
-        ids.add(1);
-        ids.add(1);
-        ids.add(1);
-        ids.add(2);
-        ids.add(2);
-        ids.add(2);
-        ids.add(2);
-        ids.add(2);
-        ids.add(3);
-        ids.add(3);
-        ids.add(3);
-        ids.add(3);
-        ids.add(4);
-        ids.add(4);
-        ids.add(4);
-        ids.add(4);
-        ids.add(4);
-        ids.add(4);
-        ids.add(5);
-        ids.add(5);
-        ids.add(5);
-        ids.add(5);
-        ids.add(5);
-        ids.add(5);
-        ids.add(5);
-        ids.add(5);
-        ids.add(6);
-        ids.add(6);
-        ids.add(6);
-        ids.add(6);
-        ids.add(6);
-        ids.add(6);
-        ids.add(6);
-        ids.add(6);
-        ids.add(7);
-        ids.add(7);
-        ids.add(7);
-        ids.add(7);
-        ids.add(7);
-        ids.add(7);
-        ids.add(7);
-        ids.add(7);
-        ids.add(7);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
-        ids.add(8);
 
+        for (int i = 0; i < 50; i++) {
+            int random = (int) (Math.random() * 50 + 1);
+            ids.add(random);
+        }
         printTopFive(ids);
-
         //top 5 more popular
     }
 
@@ -78,16 +26,14 @@ public class MapSortList {
             }
         }
 
-        for (Map.Entry<Integer, Integer> en : map.entrySet()) {
-            System.out.println(en.getKey() + " : " + en.getValue());
-        }
+//        for (Map.Entry<Integer, Integer> en : map.entrySet()) {
+//            System.out.println(en.getKey() + " : " + en.getValue());
+//        }
 
-        map.keySet().stream()
-            .sorted(Comparator.reverseOrder())
+        map.entrySet().stream()
+            .sorted(Map.Entry.comparingByValue())
+            .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
             .limit(5)
-            .forEach(System.out::print);
-
-
+            .forEach(System.out::println);
     }
-
 }
