@@ -1,8 +1,9 @@
-package solid;
+package solid.singleresposibility;
 
 import java.util.List;
 
 public class Main {
+//https://www.youtube.com/watch?v=_jDNAf3CzeY&ab_channel=Amigoscode
 
     public static void main(String[] args) {
         AreaCalculator areaCalculator = new AreaCalculator();

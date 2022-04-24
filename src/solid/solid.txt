@@ -17,5 +17,5 @@ Interface should not force classes to implement
 what they can't do
 Large interface should be divided into small ones
 
-Dependency In version
+Dependency Inversion
 Components on abstraction not on concretions

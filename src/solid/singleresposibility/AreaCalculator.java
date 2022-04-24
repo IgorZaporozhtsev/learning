@@ -1,4 +1,4 @@
-package solid;
+package solid.singleresposibility;
 
 import java.util.List;
 

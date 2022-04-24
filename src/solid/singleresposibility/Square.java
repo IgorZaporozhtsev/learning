@@ -1,4 +1,4 @@
-package solid;
+package solid.singleresposibility;
 
 public class Square {
     private final int length;

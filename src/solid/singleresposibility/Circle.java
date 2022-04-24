@@ -1,4 +1,4 @@
-package solid;
+package solid.singleresposibility;
 
 public class Circle {
     private final int radius;
