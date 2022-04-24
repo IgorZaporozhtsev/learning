@@ -1,6 +1,6 @@
 package solid.openclosed;
 
-public class Circle {
+public class Circle implements Shape{
     private final int radius;
 
     public Circle(int radius) {
@@ -9,5 +9,10 @@ public class Circle {
 
     public int getRadius() {
         return radius;
+    }
+
+    @Override
+    public double area() {
+        return Math.PI * Math.pow(getRadius(), 2);
     }
 }
