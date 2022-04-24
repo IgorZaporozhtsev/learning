@@ -3,6 +3,6 @@ package solid.openclosed;
 public class Cube implements Shape{
     @Override
     public double area() {
-        return 0;
+        return 100;
     }
 }
