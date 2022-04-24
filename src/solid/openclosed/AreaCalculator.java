@@ -1,4 +1,4 @@
-package solid.singleresposibility;
+package solid.openclosed;
 
 import java.util.List;
 
@@ -14,20 +14,15 @@ public class AreaCalculator {
                 sum += Math.PI * Math.pow(((Circle) shape).getRadius(), 2);
 
             }
+            if (shape instanceof Circle){
+                sum += Math.PI * Math.pow(((Circle) shape).getRadius(), 2);
+            }
+            //TODO break OpenClosePrinciple because we add new functionality (modifying class) instead expand
+            // look to solid-resolve brunch how to make refactoring and avoid such situation
+            if (shape instanceof Circle){
+                sum += Math.PI * Math.pow(((Circle) shape).getRadius(), 2);
+            }
         }
         return sum;
-    }
-
-    //TODO this method break Single Responsibility principle and should have its own class
-    // (excessive functionality)
-
-    public String json(List<Object> shapes){
-        return "{sum: %s}".formatted(sum(shapes));
-    }
-
-    //TODO this method break Single Responsibility principle and should have its own class
-    // (excessive functionality)
-    public String csv(List<Object> shapes){
-        return "sum, %s".formatted(sum(shapes));
     }
 }
