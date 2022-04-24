@@ -17,4 +17,17 @@ public class AreaCalculator {
         }
         return sum;
     }
+
+    //this method break Single Responsibility principle and should have its own class
+    //(excessive functionality)
+
+    public String json(List<Object> shapes){
+        return "{sum: %s}".formatted(sum(shapes));
+    }
+
+    //this method break Single Responsibility principle and should have its own class
+    //(excessive functionality)
+    public String csv(List<Object> shapes){
+        return "sum, %s".formatted(sum(shapes));
+    }
 }
