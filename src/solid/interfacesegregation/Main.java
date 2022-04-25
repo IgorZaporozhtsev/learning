@@ -1,4 +1,4 @@
-package solid.singleresposibility;
+package solid.interfacesegregation;
 
 import java.util.List;
 
@@ -7,19 +7,21 @@ public class Main {
 
     public static void main(String[] args) {
         AreaCalculator areaCalculator = new AreaCalculator();
-        ShapesPrinter printer = new ShapesPrinter();
         Circle circle = new Circle(10);
         Square square = new Square(10);
+        //expand functionality by add new class and implement interface
+        Cube cube = new Cube();
+        // we add new functionality like Rectangle and don't modify AreaCalculator anymore
+
 
         /**
-         * обьяснение в AreaCalculator
-         *
+         * look at Shape interface
          * */
+        ShapesPrinter printer = new ShapesPrinter();
+        List<Shape> shapes = List.of(circle, square, cube);
 
-        List<Object> shapes = List.of(circle, square);
 
         int sum = areaCalculator.sum(shapes);
-
         System.out.println(printer.json(sum));
         System.out.println(printer.csv(sum));
     }

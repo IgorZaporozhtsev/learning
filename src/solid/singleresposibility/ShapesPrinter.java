@@ -2,7 +2,10 @@ package solid.singleresposibility;
 
 import java.util.List;
 
-//this class has one responsibility
+/**
+this class has one responsibility
+ этот класс делает только одно печатает в рахных форматах
+ */
 public class ShapesPrinter {
 
     public String json(int sum){

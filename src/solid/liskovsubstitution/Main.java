@@ -1,4 +1,4 @@
-package solid.openclosed;
+package solid.liskovsubstitution;
 
 import java.util.List;
 
@@ -14,15 +14,16 @@ public class Main {
         // we add new functionality like Rectangle and don't modify AreaCalculator anymore
 
         ShapesPrinter printer = new ShapesPrinter();
-        List<Shape> shapes = List.of(circle, square, cube);
+        NoShape noShape = new NoShape();
 
-        /**
-         * Передавая в метод AreaCalculator#sum список фигур внутри метода в зависимости от типа выбираеться реализация
-         *
-         * */
+
+      /**
+       *  cмотри класс NoShape
+       *  */
+        List<Shape> shapes = List.of(circle, square, cube, noShape);
+
+
         int sum = areaCalculator.sum(shapes);
-
-
         System.out.println(printer.json(sum));
         System.out.println(printer.csv(sum));
     }

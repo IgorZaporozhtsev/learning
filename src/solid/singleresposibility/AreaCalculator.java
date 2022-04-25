@@ -18,4 +18,21 @@ public class AreaCalculator {
         return sum;
     }
 
+/**
+ * Добавляяя в класс эти методы мы нарушаем прицип SingleResponsibility
+ * потому как этот клас отвечает только за постчет калькуляци не должен заниматься печатанием
+ * результата в разных форматах
+ * Для этого мы зоздадим другой класс
+ * ShapesPrinter
+ *
+ * */
+
+//    public String json(int sum){
+//        return "{sum: %s}".formatted(sum);
+//    }
+//
+//    public String csv(int sum){
+//        return "sum, %s".formatted(sum);
+//    }
+
 }
