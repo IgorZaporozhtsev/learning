@@ -15,6 +15,7 @@ public class ShapesPrinter {
      *
      * */
     private final Calculator areaCalculator;
+    // private AreaCalculator areaCalculator = new AreaCalculator();
 
     public ShapesPrinter(Calculator areaCalculator) {
         this.areaCalculator = areaCalculator;
