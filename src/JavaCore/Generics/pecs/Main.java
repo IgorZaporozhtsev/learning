@@ -12,10 +12,11 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        someMethod(List.of(new Class4(), new Class4()));
+        someMethod1(List.of(new Class4(), new Class4()));
     }
 
-    public static void someMethod (List<? extends Class3> list) {
+    //EXTENDS
+    public static void someMethod1 (List<? extends Class3> list) {
 
 
 
@@ -32,6 +33,14 @@ public class Main {
         *  (коггда super - Родитель ничего не знает о наследнике)
         *  */
         Class2 class2 = list.get(0);
+
+
+
+    }
+
+    //SUPER
+    public static void someMethod2 (List<? super Class3> list) {
+        list.add(new Class4());
     }
 }
 
