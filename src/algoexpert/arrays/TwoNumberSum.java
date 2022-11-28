@@ -12,18 +12,18 @@ public class TwoNumberSum {
     public static int[] twoNumberSum2(int[] array, int targetSum) {
         var set = new HashSet<Integer>();
 
-        for (int i = 0; i < array.length; i++){
+        for (int j : array) {
 
             // x + y = 10
             // y = 10 - x
             // if y in a hashtable we return x and y
 
-            int y = targetSum - array[i];
+            int y = targetSum - j;
 
-            if (set.contains(y)){
-                return new int[]{y, array[i]};
+            if (set.contains(y)) {
+                return new int[]{y, j};
             } else {
-                set.add(array[i]);
+                set.add(j);
             }
 
 
