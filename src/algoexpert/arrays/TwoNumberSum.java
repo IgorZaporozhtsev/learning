@@ -1,11 +1,35 @@
 package algoexpert.arrays;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class TwoNumberSum {
     public static void main(String[] args) {
-        int[] twoNumberSum = twoNumberSum(new int[]{3, 5, -4, 8, 11, 1, -1, 6}, 10);
+        int[] twoNumberSum = twoNumberSum2(new int[]{3, 5, -4, 8, -1, 1, 11, 6}, 10);
         System.out.println(Arrays.toString(twoNumberSum));
+    }
+
+
+    public static int[] twoNumberSum2(int[] array, int targetSum) {
+        var set = new HashSet<Integer>();
+
+        for (int i = 0; i < array.length; i++){
+
+            // x + y = 10
+            // y = 10 - x
+            // if y in a hashtable we return x and y
+
+            int y = targetSum - array[i];
+
+            if (set.contains(y)){
+                return new int[]{y, array[i]};
+            } else {
+                set.add(array[i]);
+            }
+
+
+        }
+
+        return new int[0];
     }
 
     public static int[] twoNumberSum(int[] array, int targetSum) {
