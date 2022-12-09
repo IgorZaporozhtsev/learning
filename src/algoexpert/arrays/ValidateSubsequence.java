@@ -8,7 +8,8 @@ public class ValidateSubsequence {
     public static void main(String[] args) {
         boolean isValid = isValidSubsequence(
                 List.of(5, 1, 22, 25, 6, -1, 8, 10),
-                List.of(22, 25, 6)
+                null
+                //List.of(22, 25, 6)
         );
         System.out.println(isValid);
 
