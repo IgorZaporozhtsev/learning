@@ -1,4 +1,4 @@
-package books.ModernJavaInAction.behavior_paprameterization.resolution;
+package books.ModernJavaInAction.behavior_parameterization.solution;
 
 import books.ModernJavaInAction.util.Apple;
 

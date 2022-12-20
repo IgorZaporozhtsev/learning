@@ -1,0 +1,9 @@
+There is different condition Apple has such different color, weight so on.
+We should satisfy all of them in convenient way.
+We can create interface predicate ApplePredicate
+It's look line design pattern Strategy
+we can choose different strategy AppleHeavyWeightPredicate or AppleGreenColorPredicate
+
+Behavior parameterization is the ability of a method to take multiple different behaviors as parameters
+and use them internally to accomplish different behaviors. Behavior parameterization lets you make your
+code more adaptive to changing requirements and saves on engineering efforts in the future.

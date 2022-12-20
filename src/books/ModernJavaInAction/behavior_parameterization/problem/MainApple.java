@@ -1,5 +1,9 @@
-package books.ModernJavaInAction.behavior_paprameterization.problem;
+package books.ModernJavaInAction.behavior_parameterization.problem;
 
+import books.ModernJavaInAction.behavior_parameterization.solution.AppleGreenColorPredicate;
+import books.ModernJavaInAction.behavior_parameterization.solution.AppleHeavyWeightPredicate;
+import books.ModernJavaInAction.behavior_parameterization.solution.ApplePredicate;
+import books.ModernJavaInAction.behavior_parameterization.solution.AppleRedAndHeavyPredicate;
 import books.ModernJavaInAction.util.Apple;
 import books.ModernJavaInAction.util.Color;
 
@@ -12,7 +16,7 @@ import static books.ModernJavaInAction.util.Color.*;
 public class MainApple {
     public static void main(String[] args) {
         var inventory1 = List.of(new Apple(GREEN), new Apple(RED));
-        var inventory2 = List.of(new Apple(GREEN, 300), new Apple(RED, 200));
+        var inventory2 = List.of(new Apple(GREEN, 200), new Apple(RED, 300));
 
         //STEP 1
         List<Apple> greenApples = filterGreenApples(inventory1);
@@ -25,6 +29,14 @@ public class MainApple {
         //STEP3
         printApple("bad filter attempt - false", filterApples(inventory2, GREEN, 130, false));
         printApple("bad filter attempt - true",  filterApples(inventory2,RED, 34, true));
+
+
+        printApple("filter with green color predicate",
+                filterApplesWithPredicate(inventory2, new AppleGreenColorPredicate()));
+        printApple("filter with weight predicate",
+                filterApplesWithPredicate(inventory2, new AppleHeavyWeightPredicate()));
+        printApple("filter with red and heavy predicate",
+                filterApplesWithPredicate(inventory2, new AppleRedAndHeavyPredicate()));
     }
 
     //STEP 1
@@ -78,7 +90,20 @@ public class MainApple {
         return result;
     }
 
+    //STEP 4 SOLUTION, Strategy
+
+    public static List<Apple> filterApplesWithPredicate(List<Apple> apples, ApplePredicate predicate){
+        List<Apple> result = new ArrayList<>();
+
+        for (Apple apple: apples) {
+            if (predicate.test(apple)){
+                result.add(apple);
+            }
+        }
+        return result;
+
+    }
     public static void printApple(String metadata, List<Apple> apples){
-        System.out.println(metadata + " - " + Arrays.toString(apples.toArray()));
+        System.out.println(metadata + " - " + Arrays.toString(apples.toArray()) + "\n");
     }
 }
