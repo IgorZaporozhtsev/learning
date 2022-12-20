@@ -1,4 +1,4 @@
-package refactoring.ifelse.refactoring.issue;
+package refactoring.ifelse_refactoring.issue;
 
 public class MessageSenderUtil {
     public static int getTemplateTypeCodeFromDB() {

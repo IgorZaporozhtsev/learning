@@ -1,6 +1,4 @@
-package refactoring.ifelse.refactoring.solution_1;
-
-import java.util.function.Supplier;
+package refactoring.ifelse_refactoring.solution_1;
 
 public enum MessageType {
     PERSONAL(0, new PersonalMailTemplate()),

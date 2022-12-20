@@ -2,6 +2,7 @@ package live_coding;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -38,9 +39,10 @@ public class HashTagStream {
                 .toList();
     }
 
-    private static Map<String, Long> collectToMap(List<String> list) {
-        return list.stream()
-                .collect(groupingBy(Function.identity(), Collectors.counting()))
+   private static Map<String, Long> collectToMap(List<String> list) {
+       Collector<String, ?, Map<String, Long>> stringMapCollector = groupingBy(Function.identity(), counting());
+       return list.stream()
+                .collect(stringMapCollector)
                 .entrySet()
                 .stream()
                 .sorted(Comparator.comparingLong(Map.Entry::getValue))

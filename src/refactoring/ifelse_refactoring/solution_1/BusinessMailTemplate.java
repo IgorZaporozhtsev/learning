@@ -1,4 +1,4 @@
-package refactoring.ifelse.refactoring.solution_1;
+package refactoring.ifelse_refactoring.solution_1;
 
 public class BusinessMailTemplate implements MailTemplate {
     @Override

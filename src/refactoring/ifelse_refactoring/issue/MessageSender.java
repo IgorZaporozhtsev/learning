@@ -1,4 +1,4 @@
-package refactoring.ifelse.refactoring.issue;
+package refactoring.ifelse_refactoring.issue;
 
 
 // https://www.youtube.com/watch?v=9hD2rh3PXvM&ab_channel=MJC

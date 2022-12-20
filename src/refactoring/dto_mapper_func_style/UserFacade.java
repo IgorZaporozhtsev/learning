@@ -1,4 +1,4 @@
-package refactoring.functional.style;
+package refactoring.dto_mapper_func_style;
 
 import java.util.ArrayList;
 import java.util.List;
