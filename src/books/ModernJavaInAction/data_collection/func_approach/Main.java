@@ -1,5 +1,6 @@
 package books.ModernJavaInAction.data_collection.func_approach;
 
+import books.ModernJavaInAction.util.CaloricLevel;
 import books.ModernJavaInAction.util.Dish;
 import books.ModernJavaInAction.util.Type;
 
@@ -22,15 +23,59 @@ public class Main {
                 new Dish("prawns", false, 300, FISH),
                 new Dish("salmon", false, 450, FISH) );
 
-        //----
-        //----
-        //----
+        //----action after grouping - filter() not always work - use filtering
+
+        /* here Type.FISH didn't included because fulfills the conditions, but we want to se in Map as empty value
+        {
+           actual
+
+           OTHER=[french fries, pizza],
+           MEAT=[pork, beef]
+
+           expected
+
+           OTHER=[french fries, pizza],
+           MEAT=[pork, beef]
+           FISH = []
+        }
+        */
+
+        Map<Type, List<Dish>> byCaloriesLessThan500 = menu.stream()
+                .filter(dish -> dish.getCalories() > 500)
+                .collect(groupingBy(Dish::getType));
+
+
+        //solution
+
+        Map<Type, List<Dish>> byCaloriesLessThan500_2 = menu.stream()
+                .collect(groupingBy(
+                        Dish::getType,
+                        filtering(dish -> dish.getCalories() > 500, toList())));
+
+
+        System.out.println(byCaloriesLessThan500_2);
+
+        //----action after grouping - Collect by enum even Dish class doesn't hold enum CaloricLevel
+        Map<CaloricLevel, List<Dish>> collect = menu.stream().collect(groupingBy(dish ->
+                {
+                    if (dish.getCalories() > 400) return CaloricLevel.DIET;
+                    else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
+                    else return CaloricLevel.FAT;
+                }
+        ));
+
+
+        //----group by
+        Map<Type, List<Dish>> groupByType = menu.stream().collect(groupingBy(Dish::getType));
+
         //----total different ways
+        int totalCalories4 = menu.stream().mapToInt(Dish::getCalories).sum();
+        int totalCalories5 = menu.stream().map(Dish::getCalories).reduce(Integer::sum)
+                .orElse(0);
 
         //----using reducing
-        Integer totalCaloriesWithReducing = menu.stream().
+        Integer totalCalories3 = menu.stream().
                 collect(reducing(0, Dish::getCalories, (i, j) -> i + j));
-        System.out.println(totalCaloriesWithReducing);
 
         Optional<Dish> mostCalorieDish =
                 menu.stream().collect(reducing(
