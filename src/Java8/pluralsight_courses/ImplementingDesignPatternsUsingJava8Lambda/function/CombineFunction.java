@@ -1,7 +1,9 @@
 package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.function;
 
+import java.io.IOException;
+
 public class CombineFunction {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Meteo meteo = new Meteo(10);
 
         Function<Meteo, Integer> readCelsius = m -> m.getTemperature();

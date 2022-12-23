@@ -11,7 +11,7 @@ public class MainComparator {
         Comparator<Person_1> cmpAge = (p1, p2) -> p1.getAge() - p2.getAge();
         Comparator<Person_1> cmpFirstName = (p1, p2) -> p1.getFirst_name().compareTo(p2.getFirst_name());
 
-        int compare = cmpFirstName.compare(nick, dick);
+        int compare = cmpAge.compare(nick, dick);
         System.out.println(compare);
 
 

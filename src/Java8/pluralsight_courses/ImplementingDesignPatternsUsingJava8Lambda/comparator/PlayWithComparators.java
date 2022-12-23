@@ -1,10 +1,11 @@
 package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.comparator;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PlayWithComparators {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Person mary = new Person("Mary", 28);
         Person john = new Person("John", 22);
         Person linda = new Person("Linda", 26);

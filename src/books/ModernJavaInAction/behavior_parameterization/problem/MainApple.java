@@ -4,7 +4,9 @@ import books.ModernJavaInAction.behavior_parameterization.solution.AppleGreenCol
 import books.ModernJavaInAction.behavior_parameterization.solution.AppleHeavyWeightPredicate;
 import books.ModernJavaInAction.behavior_parameterization.solution.ApplePredicate;
 import books.ModernJavaInAction.behavior_parameterization.solution.AppleRedAndHeavyPredicate;
+import books.ModernJavaInAction.behavior_parameterization.with_generics.Predicate;
 import books.ModernJavaInAction.util.Apple;
+import books.ModernJavaInAction.util.Bananas;
 import books.ModernJavaInAction.util.Color;
 
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class MainApple {
     public static void main(String[] args) {
         var inventory1 = List.of(new Apple(GREEN), new Apple(RED));
         var inventory2 = List.of(new Apple(GREEN, 200), new Apple(RED, 300));
+        var inventory3 = List.of(new Bananas(GREEN, 200), new Bananas(RED, 300));
 
         //STEP 1
         List<Apple> greenApples = filterGreenApples(inventory1);
@@ -37,6 +40,17 @@ public class MainApple {
                 filterApplesWithPredicate(inventory2, new AppleHeavyWeightPredicate()));
         printApple("filter with red and heavy predicate",
                 filterApplesWithPredicate(inventory2, new AppleRedAndHeavyPredicate()));
+
+        //STEP 5 using lambda
+        List<Apple> apples = filterApplesWithPredicate(inventory2, apple -> GREEN.equals(apple.getColor()));
+        printApple("filter with green color with lambda predicate", apples);
+
+
+        //STEP 6 with Generics
+        var bananas = filter(inventory3, banana-> GREEN.equals(banana.getColor()));
+        printApple("filter banana with lambda generics", bananas);
+
+
     }
 
     //STEP 1
@@ -103,7 +117,26 @@ public class MainApple {
         return result;
 
     }
-    public static void printApple(String metadata, List<Apple> apples){
-        System.out.println(metadata + " - " + Arrays.toString(apples.toArray()) + "\n");
+
+
+    //STEP 6 using Generics
+    public static <T> List<T> filter(List<T> inventory, Predicate<T> predicate) {
+        List<T> result = new ArrayList<>();
+
+        for (T value: inventory) {
+            if (predicate.test(value)){
+                result.add(value);
+            }
+        }
+        return result;
+
+    }
+
+
+
+
+
+    public static <T> void printApple(String metadata, List<T> inventory){
+        System.out.println(metadata + " - " + Arrays.toString(inventory.toArray()) + "\n");
     }
 }

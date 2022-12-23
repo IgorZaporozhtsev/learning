@@ -24,7 +24,7 @@ public class MainAPICollection {
 
         people.replaceAll(person -> new Person(person.getName().toUpperCase(), person.getAge()));
 
-        people.sort(Comparator.comparing(Person::getAge).thenComparing(Person::getName));
+        people.sort(Comparator.comparing(Person::getName));//.thenComparing(Person::getName));
 
         people.removeIf(person -> person.getAge() < 10);
 

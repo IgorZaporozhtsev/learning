@@ -2,12 +2,13 @@ package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.com
 
 import Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.function.Function;
 
+import java.io.IOException;
 import java.util.Objects;
 
 @FunctionalInterface
 public interface Comparator<T> {
 
-    int compare(T t1, T t2);
+    int compare(T t1, T t2) throws IOException;
 
     static Comparator<Person> comparing(Function<Person, String> keyExtractor) {
         Objects.requireNonNull(keyExtractor);

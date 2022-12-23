@@ -1,10 +1,11 @@
 package Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.function;
 
+import java.io.IOException;
 import java.util.Objects;
 
 @FunctionalInterface
 public interface Function<T/*Meteo*/, R/*Integer*/> {
-    R apply(T t);
+    R apply(T t) throws IOException;
 
     default <V> Function<T/*Meteo*/, V/*Double*/> andThen(Function<R/*Integer*/, V/*Double*/> next) {
         Objects.requireNonNull(next);
