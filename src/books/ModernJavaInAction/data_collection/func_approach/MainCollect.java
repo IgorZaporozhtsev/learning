@@ -10,7 +10,7 @@ import java.util.*;
 import static books.ModernJavaInAction.util.Type.*;
 import static java.util.stream.Collectors.*;
 
-public class Main {
+public class MainCollect {
     public static void main(String[] args) {
         List<Dish> menu = Arrays.asList(
                 new Dish("pork", false, 800, MEAT),
@@ -22,51 +22,6 @@ public class Main {
                 new Dish("pizza", true, 550, OTHER),
                 new Dish("prawns", false, 300, FISH),
                 new Dish("salmon", false, 450, FISH) );
-
-        //----action after grouping - filter() not always work - use filtering
-
-        /* here Type.FISH didn't included because fulfills the conditions, but we want to se in Map as empty value
-        {
-           actual
-
-           OTHER=[french fries, pizza],
-           MEAT=[pork, beef]
-
-           expected
-
-           OTHER=[french fries, pizza],
-           MEAT=[pork, beef]
-           FISH = []
-        }
-        */
-
-        Map<Type, List<Dish>> byCaloriesLessThan500 = menu.stream()
-                .filter(dish -> dish.getCalories() > 500)
-                .collect(groupingBy(Dish::getType));
-
-
-        //solution
-
-        Map<Type, List<Dish>> byCaloriesLessThan500_2 = menu.stream()
-                .collect(groupingBy(
-                        Dish::getType,
-                        filtering(dish -> dish.getCalories() > 500, toList())));
-
-
-        System.out.println(byCaloriesLessThan500_2);
-
-        //----action after grouping - Collect by enum even Dish class doesn't hold enum CaloricLevel
-        Map<CaloricLevel, List<Dish>> collect = menu.stream().collect(groupingBy(dish ->
-                {
-                    if (dish.getCalories() > 400) return CaloricLevel.DIET;
-                    else if (dish.getCalories() <= 700) return CaloricLevel.NORMAL;
-                    else return CaloricLevel.FAT;
-                }
-        ));
-
-
-        //----group by
-        Map<Type, List<Dish>> groupByType = menu.stream().collect(groupingBy(Dish::getType));
 
         //----total different ways
         int totalCalories4 = menu.stream().mapToInt(Dish::getCalories).sum();
