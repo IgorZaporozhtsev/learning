@@ -5,22 +5,18 @@ import books.ModernJavaInAction.util.Dish;
 import books.ModernJavaInAction.util.Type;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
 
-import static books.ModernJavaInAction.util.Type.*;
+import static books.ModernJavaInAction.util.Menu.getMenu;
+
+import static books.ModernJavaInAction.util.Menu.printMapOfList;
 import static java.util.stream.Collectors.*;
 
-public class MainGrouping {
+public class Grouping {
+
     public static void main(String[] args) {
-        List<Dish> menu = Arrays.asList(
-                new Dish("pork", false, 800, MEAT),
-                new Dish("beef", false, 700, MEAT),
-                new Dish("chicken", false, 400, MEAT),
-                new Dish("french fries", true, 530, OTHER),
-                new Dish("rice", true, 350, OTHER),
-                new Dish("season fruit", true, 120, OTHER),
-                new Dish("pizza", true, 550, OTHER),
-                new Dish("prawns", false, 300, FISH),
-                new Dish("salmon", false, 450, FISH) );
+        List<Dish> menu = getMenu();
 
         /*
         how groupingBy works
@@ -33,19 +29,29 @@ public class MainGrouping {
 
 
         */
+//
 
 //how to avoid Optional
-        var mostCaloricByType = menu.stream().collect(
+        var mostCaloricByType1 = menu.stream().collect(
                 groupingBy(Dish::getType,
                         maxBy(Comparator.comparingInt(Dish::getCalories))));
 
+        var mostCaloricByType2 = menu.stream().collect(groupingBy(Dish::getType,
+                collectingAndThen(
+                        maxBy(
+                                Comparator.comparingInt(Dish::getCalories)),
+                        Optional::get)));
 
-
+        var mostCaloricByType3 = menu.stream().collect(
+                toMap(
+                        Dish::getType,
+                        Function.identity(),
+                        BinaryOperator.maxBy(Comparator.comparingInt(Dish::getCalories))));
 
 
 //groupingBy second downstream parameter counting
-        var typesCount = menu.stream().collect(
-                groupingBy(Dish::getType, counting()));
+        var typesCount = menu.stream()
+                .collect(groupingBy(Dish::getType, counting()));
 
 
         //-----many level grouping
@@ -100,7 +106,6 @@ public class MainGrouping {
                         filtering(dish -> dish.getCalories() > 500, toList())));
 
 
-printMapOfList(byCaloriesLessThan500);
 
 //----grouping by type that not exist in class, but we use condition
 // action after grouping - Collect by enum even Dish class doesn't hold enum CaloricLevel
@@ -118,29 +123,4 @@ printMapOfList(byCaloriesLessThan500);
         Map<Type, List<Dish>> groupByType = menu.stream().collect(groupingBy(Dish::getType, toList()));
     }
 
-    public static <K,V> void print(Map<K,V> map){
-        map.forEach((k,v) -> System.out.println(k + " " + v));
-    }
-
-    public static  <T, R> void printMapOfList(Map<T, List<R>> map){
-
-        for ( Map.Entry<T, List<R>> entry : map.entrySet()) {
-            System.out.println(entry.getKey());
-            entry.getValue().forEach(dish-> System.out.println("     "+dish));
-
-        }
-    }
-
-    public static  <T, R, K> void printMapOfMap(Map<T, Map<R, List<K>>> map){
-        for ( Map.Entry<T, Map<R, List<K>>> entry :map.entrySet()) {
-            System.out.println(entry.getKey() + ":");
-
-
-            for (Map.Entry<R, List<K>> value: entry.getValue().entrySet()) {
-                System.out.println("     "  + value.getKey() + ":");
-                value.getValue().forEach(dish -> System.out.println("           "+dish));
-            }
-
-        }
-    }
 }

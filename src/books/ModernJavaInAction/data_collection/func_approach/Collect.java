@@ -1,27 +1,17 @@
 package books.ModernJavaInAction.data_collection.func_approach;
 
-import books.ModernJavaInAction.util.CaloricLevel;
 import books.ModernJavaInAction.util.Dish;
-import books.ModernJavaInAction.util.Type;
 
 
 import java.util.*;
 
-import static books.ModernJavaInAction.util.Type.*;
+import static books.ModernJavaInAction.util.Menu.getMenu;
+
 import static java.util.stream.Collectors.*;
 
-public class MainCollect {
+public class Collect {
     public static void main(String[] args) {
-        List<Dish> menu = Arrays.asList(
-                new Dish("pork", false, 800, MEAT),
-                new Dish("beef", false, 700, MEAT),
-                new Dish("chicken", false, 400, MEAT),
-                new Dish("french fries", true, 530, OTHER),
-                new Dish("rice", true, 350, OTHER),
-                new Dish("season fruit", true, 120, OTHER),
-                new Dish("pizza", true, 550, OTHER),
-                new Dish("prawns", false, 300, FISH),
-                new Dish("salmon", false, 450, FISH) );
+        List<Dish> menu = getMenu();
 
         //----total different ways
         int totalCalories4 = menu.stream().mapToInt(Dish::getCalories).sum();
