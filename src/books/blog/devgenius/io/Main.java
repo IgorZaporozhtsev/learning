@@ -8,6 +8,7 @@ import books.blog.devgenius.io.repo.ProductRepository;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -77,8 +78,20 @@ public class Main {
                 .mapToDouble(Product::getPrice)
                 .sum();
 
+        //Exercise 9 — Calculate order average payment placed on 14-Mar-2021
+        Double average = orders.stream()
+                .filter(order -> order.getOrderDate().isEqual(LocalDate.of(2021, 3, 14)))
+                .map(Order::getProducts)
+                .flatMap(Collection::stream)
+                .mapToDouble(Product::getPrice)
+                .average()
+                .getAsDouble();
 
-        System.out.println(totalDebOrders);
+        //Exercise 10 — Obtain a collection of statistic figures (i.e. sum, average, max, min, count)
+        // for all products of category “Books”
+
+
+        System.out.println(average);
         //System.out.println(Arrays.toString(productByDate.toArray()));
     }
 
