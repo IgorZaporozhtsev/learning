@@ -89,7 +89,15 @@ public class Main {
 
         //Exercise 10 — Obtain a collection of statistic figures (i.e. sum, average, max, min, count)
         // for all products of category “Books”
+        DoubleSummaryStatistics stat1 = products.stream()
+                .filter(product -> product.getCategory().equalsIgnoreCase("book"))
+                .collect(Collectors.summarizingDouble(Product::getPrice));
 
+
+        DoubleSummaryStatistics statistics = products.stream()
+                .filter(p -> p.getCategory().equalsIgnoreCase("Books"))
+                .mapToDouble(Product::getPrice)
+                .summaryStatistics();
 
         System.out.println(average);
         //System.out.println(Arrays.toString(productByDate.toArray()));
