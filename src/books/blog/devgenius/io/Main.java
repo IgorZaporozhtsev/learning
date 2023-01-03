@@ -1,5 +1,6 @@
 package books.blog.devgenius.io;
 
+import books.ModernJavaInAction.util.Menu;
 import books.blog.devgenius.io.model.Order;
 import books.blog.devgenius.io.model.Product;
 import books.blog.devgenius.io.repo.OrderRepository;
@@ -8,7 +9,12 @@ import books.blog.devgenius.io.repo.ProductRepository;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.summingInt;
 
 public class Main {
 
@@ -99,7 +105,31 @@ public class Main {
                 .mapToDouble(Product::getPrice)
                 .summaryStatistics();
 
-        System.out.println(average);
+
+        //Exercise 11 — Obtain a data map with order id and order’s product count
+        var orderProductsCount1 = orders.stream()
+                        .collect(groupingBy(
+                                Order::getId, summingInt(order-> order.getProducts().size())));
+
+
+        var orderProductsCount2 = orders.stream()
+                        .collect(toMap(Order::getId, order -> order.getProducts().size()));
+
+
+        //Exercise 12 — Produce a data map with order records grouped by customer
+        var byCustomer= orders.stream()
+                .collect(groupingBy(Order::getCustomer));
+
+
+        //Exercise 13 — Produce a data map with order record and product total sum
+
+        var totalSumOfOrders = orders.stream()
+                .collect(toMap( Function.identity(), order -> order.getProducts().stream()
+                                        .mapToDouble(Product::getPrice).sum()
+                        )
+                );
+
+        Menu.print(totalSumOfOrders);
         //System.out.println(Arrays.toString(productByDate.toArray()));
     }
 
