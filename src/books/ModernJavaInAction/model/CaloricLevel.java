@@ -1,4 +1,4 @@
-package books.ModernJavaInAction.util;
+package books.ModernJavaInAction.model;
 
 public enum CaloricLevel {
     DIET, NORMAL, FAT

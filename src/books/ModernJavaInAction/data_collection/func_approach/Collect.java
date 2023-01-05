@@ -1,11 +1,11 @@
 package books.ModernJavaInAction.data_collection.func_approach;
 
-import books.ModernJavaInAction.util.Dish;
+import books.ModernJavaInAction.model.Dish;
 
 
 import java.util.*;
 
-import static books.ModernJavaInAction.util.Menu.getMenu;
+import static books.ModernJavaInAction.model.Menu.getMenu;
 
 import static java.util.stream.Collectors.*;
 

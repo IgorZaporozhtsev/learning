@@ -1,7 +1,7 @@
 package books.ModernJavaInAction.behavior_parameterization.solution;
 
-import books.ModernJavaInAction.util.Apple;
-import static books.ModernJavaInAction.util.Color.*;
+import books.ModernJavaInAction.model.Apple;
+import static books.ModernJavaInAction.model.Color.*;
 
 public class AppleRedAndHeavyPredicate implements ApplePredicate{
     @Override

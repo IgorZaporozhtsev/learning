@@ -1,12 +1,12 @@
 package books.ModernJavaInAction.data_collection.func_approach;
 
-import books.ModernJavaInAction.util.CaloricLevel;
-import books.ModernJavaInAction.util.Dish;
-import books.ModernJavaInAction.util.Type;
+import books.ModernJavaInAction.model.CaloricLevel;
+import books.ModernJavaInAction.model.Dish;
+import books.ModernJavaInAction.model.Type;
 import java.util.*;
 import java.util.function.BinaryOperator;
 import java.util.function.Function;
-import static books.ModernJavaInAction.util.Menu.getMenu;
+import static books.ModernJavaInAction.model.Menu.getMenu;
 import static java.util.stream.Collectors.*;
 
 public class Grouping {

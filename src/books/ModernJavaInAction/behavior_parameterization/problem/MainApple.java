@@ -5,15 +5,15 @@ import books.ModernJavaInAction.behavior_parameterization.solution.AppleHeavyWei
 import books.ModernJavaInAction.behavior_parameterization.solution.ApplePredicate;
 import books.ModernJavaInAction.behavior_parameterization.solution.AppleRedAndHeavyPredicate;
 import books.ModernJavaInAction.behavior_parameterization.with_generics.Predicate;
-import books.ModernJavaInAction.util.Apple;
-import books.ModernJavaInAction.util.Bananas;
-import books.ModernJavaInAction.util.Color;
+import books.ModernJavaInAction.model.Apple;
+import books.ModernJavaInAction.model.Bananas;
+import books.ModernJavaInAction.model.Color;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static books.ModernJavaInAction.util.Color.*;
+import static books.ModernJavaInAction.model.Color.*;
 
 public class MainApple {
     public static void main(String[] args) {

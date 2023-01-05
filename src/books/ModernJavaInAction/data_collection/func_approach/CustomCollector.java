@@ -1,8 +1,6 @@
 package books.ModernJavaInAction.data_collection.func_approach;
 
-import books.ModernJavaInAction.util.Dish;
-import books.ModernJavaInAction.util.Menu;
-import cources.stepic.base.tutorial.Coll;
+import books.ModernJavaInAction.model.Dish;
 
 import java.util.*;
 import java.util.function.BiConsumer;
@@ -11,7 +9,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-import static books.ModernJavaInAction.util.Menu.getMenu;
+import static books.ModernJavaInAction.model.Menu.getMenu;
 
 public class CustomCollector {
     public static void main(String[] args) {

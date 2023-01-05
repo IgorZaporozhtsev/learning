@@ -1,16 +1,16 @@
 package books.blog.devgenius.io;
 
-import books.ModernJavaInAction.util.Menu;
+import books.ModernJavaInAction.model.Menu;
 import books.blog.devgenius.io.model.Order;
 import books.blog.devgenius.io.model.Product;
 import books.blog.devgenius.io.repo.OrderRepository;
 import books.blog.devgenius.io.repo.ProductRepository;
+import util.PrintStream;
 
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.*;
@@ -129,8 +129,30 @@ public class Main {
                         )
                 );
 
-        Menu.print(totalSumOfOrders);
-        //System.out.println(Arrays.toString(productByDate.toArray()));
+        //Exercise 14 — Obtain a data map with list of product name by category
+        Map<String, List<String>> productByCategory = products.stream()
+                .collect(groupingBy(
+                        Product::getCategory, mapping(Product::getName, toList())));
+
+
+        //Exercise 15 Get the most expensive product by category
+        Map<String, Optional<Product>> expensiveProductByCategory = products.stream()
+                .collect(groupingBy(
+                        Product::getCategory,
+                        mapping(
+                                Function.identity(),
+                                Collectors.maxBy(Comparator.comparingDouble(Product::getPrice)))));
+
+        Map<String, Product> expensiveProductByCategory2 = products.stream()
+                .collect(groupingBy(
+                        Product::getCategory,
+                        collectingAndThen(
+                                maxBy(Comparator.comparingDouble(Product::getPrice)),
+                                Optional::get)));
+
+
+
+                        //System.out.println(Arrays.toString(productByDate.toArray()));
     }
 
     private static boolean isBaby(Order order) {

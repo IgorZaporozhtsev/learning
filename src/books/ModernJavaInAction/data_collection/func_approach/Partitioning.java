@@ -1,14 +1,13 @@
 package books.ModernJavaInAction.data_collection.func_approach;
 
-import books.ModernJavaInAction.util.Dish;
+import books.ModernJavaInAction.model.Dish;
+import util.PrintStream;
 
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-import static books.ModernJavaInAction.util.Menu.*;
+import static books.ModernJavaInAction.model.Menu.*;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
@@ -43,7 +42,7 @@ public class Partitioning {
                                     maxBy(comparingInt(Dish::getCalories)),Optional::get)));
 
 
-        print(mostCaloricPartitionedByVegetarian);
+        PrintStream.print(mostCaloricPartitionedByVegetarian);
     }
 
 

@@ -1,4 +1,4 @@
-package books.ModernJavaInAction.util;
+package books.ModernJavaInAction.model;
 
 public class Dish {
     private final String name;
