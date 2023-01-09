@@ -33,7 +33,8 @@ public class Main {
 
         //Exercise 2 - Obtain a list of order with products belong to category “Baby”
         List<Order> result = orders.stream()
-                .filter(Main::isBaby)
+                .filter(order -> order.getProducts().stream()
+                        .anyMatch(product -> product.category.equalsIgnoreCase("baby")))
                 .toList();
 
         //Exercise 3 - Obtain a list of product with category = “Toys” and then apply 10% discount
@@ -155,10 +156,7 @@ public class Main {
                         //System.out.println(Arrays.toString(productByDate.toArray()));
     }
 
-    private static boolean isBaby(Order order) {
-        return order.getProducts().stream()
-                .anyMatch(product -> product.category.equalsIgnoreCase("baby"));
-    }
+
 
 }
 

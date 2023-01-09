@@ -17,7 +17,8 @@ public class Partitioning {
         List<Dish> menu = getMenu();
 
  /*
-        how groupingBy works
+
+        how partitioningBy works
         partitioningBy(predicate, downstream)
         predicate - is a key
         downstream - is a value (f.e toList())
