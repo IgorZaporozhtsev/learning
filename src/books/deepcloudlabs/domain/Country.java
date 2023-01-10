@@ -10,7 +10,7 @@ public class Country {
     private double surfaceArea;
     private int population;
     private double gnp;
-    private int capital;
+    private int capitalID;
     private List<City> cities;
     {
         cities = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Country {
         this.continent = continent;
         this.surfaceArea = surfaceArea;
         this.population = population;
-        this.capital = capital;
+        this.capitalID = capital;
         this.gnp = gnp;
     }
 
@@ -70,12 +70,12 @@ public class Country {
         this.gnp = gnp;
     }
 
-    public int getCapital() {
-        return capital;
+    public int getCapitalID() {
+        return capitalID;
     }
 
-    public void setCapital(int capital) {
-        this.capital = capital;
+    public void setCapitalID(int capitalID) {
+        this.capitalID = capitalID;
     }
 
     public void setPopulation(int population) {

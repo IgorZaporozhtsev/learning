@@ -2,13 +2,20 @@ package books.deepcloudlabs.exercises;
 
 import books.deepcloudlabs.dao.*;
 import books.deepcloudlabs.domain.*;
+import books.deepcloudlabs.pair.ContinentCityPair;
+import books.deepcloudlabs.pair.CountryCityCountPair;
+import books.deepcloudlabs.pair.DirectorGenrePair;
+import books.deepcloudlabs.pair.DirectorGenresPair;
 import books.deepcloudlabs.service.InMemoryDataService;
 import books.deepcloudlabs.service.MovieService;
+import util.PrintStream;
 
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 import static java.util.stream.Collectors.*;
 
@@ -77,15 +84,62 @@ public class Main {
         var highPopulatedCapitalCity2 =
                 countryDao.findAllCountries()
                         .stream()
-                        .map(Country::getCapital)
-                        .map(cityDao::findCityById) //relate by ID with CityDao
+                        .map(Country::getCapitalID)
+                        .map(cityDao::findCityById) //relate by ID with CityDao!
                         //.peek(System.out::println)
                         .filter(Objects::nonNull)
                         .max(Comparator.comparing(City::getPopulation));
-        highPopulatedCapitalCity2.ifPresent(System.out::println);
+
+        //highPopulatedCapitalCity2.ifPresent(System.out::println);
 
         //Ex. 5
-        //Ex. 6
+
+        // Find the highest populated capital city of each continent
+        Function<ContinentCityPair, City> extractCity = ContinentCityPair::city;
+        var highPopulatedNOTCapitalCityOfEachContinent = countryDao.findAllCountries().stream()
+                .map(country -> country.getCities().stream()
+                        .map(city -> new ContinentCityPair(country.getContinent(), city)).toList())
+                .flatMap(Collection::stream)
+                .filter(pair -> Objects.nonNull(pair.city()))
+                //.peek(System.out::println)
+                .collect(groupingBy(
+                        ContinentCityPair::continent,
+                        maxBy(Comparator.comparingInt(continentCityPair -> continentCityPair.city().getPopulation()))));
+
+        var highPopulatedCapitalCityOfEachContinent1 =
+                countryDao.findAllCountries()
+                        .stream()
+                        .map(country -> new ContinentCityPair(country.getContinent(), cityDao.findCityById(country.getCapitalID())))
+                        .filter(pair -> Objects.nonNull(pair.city()))
+                        .collect(groupingBy(ContinentCityPair::continent,
+                                maxBy(Comparator.comparing(extractCity.andThen(City::getPopulation)))));
+
+
+        var highPopulatedCapitalCityOfEachContinent3 =
+                countryDao.findAllCountries()
+                        .stream()
+                        .map(country -> new ContinentCityPair(country.getContinent(), cityDao.findCityById(country.getCapitalID())))
+                        .filter(pair -> Objects.nonNull(pair.city()))
+                        .collect(groupingBy(
+                                ContinentCityPair::continent,
+                                maxBy(Comparator.comparingInt(continentCityPair -> continentCityPair.city().getPopulation()))));
+
+
+        //Ex. 6 Sort the countries by number of their cities in descending order
+        var countriesWithCityCountInDescOrder = countryDao.findAllCountries().stream()
+                .map(country -> new CountryCityCountPair(country, country.getCities().size()))
+                .sorted(Comparator.comparingInt(CountryCityCountPair::count).reversed())
+                .distinct()
+                .toList();
+
+
+        countriesWithCityCountInDescOrder.forEach(System.out::println);
+
+
+
+
+
+
         //Ex. 7
         //Ex. 8
         //Ex. 9

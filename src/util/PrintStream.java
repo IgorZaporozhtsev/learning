@@ -3,6 +3,7 @@ package util;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static books.ModernJavaInAction.model.Type.*;
 
@@ -18,7 +19,16 @@ public class PrintStream {
 
         for ( Map.Entry<T, List<R>> entry : map.entrySet()) {
             System.out.println(entry.getKey());
-            entry.getValue().forEach(dish-> System.out.println("     "+dish));
+            entry.getValue().forEach(value-> System.out.println("     "+value));
+
+        }
+    }
+
+    public static  <T, R> void printMapOfOptional(Map<T, Optional<R>> map){
+
+        for ( Map.Entry<T, Optional<R>> entry : map.entrySet()) {
+            System.out.println(entry.getKey());
+            System.out.println("     "+entry.getValue());
 
         }
     }
@@ -30,7 +40,7 @@ public class PrintStream {
 
             for (Map.Entry<R, List<K>> value: entry.getValue().entrySet()) {
                 System.out.println("     "  + value.getKey() + ":");
-                value.getValue().forEach(dish -> System.out.println("           "+dish));
+                value.getValue().forEach(val -> System.out.println("           "+val));
             }
 
         }

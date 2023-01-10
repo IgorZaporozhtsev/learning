@@ -1,4 +1,4 @@
-package books.deepcloudlabs.dao;
+package books.deepcloudlabs.pair;
 
 import books.deepcloudlabs.domain.City;
 
