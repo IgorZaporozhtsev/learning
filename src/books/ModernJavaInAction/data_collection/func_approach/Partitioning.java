@@ -1,7 +1,7 @@
 package books.ModernJavaInAction.data_collection.func_approach;
 
 import books.ModernJavaInAction.model.Dish;
-import util.PrintStream;
+import util.PrintUtil;
 
 
 import java.util.List;
@@ -43,7 +43,7 @@ public class Partitioning {
                                     maxBy(comparingInt(Dish::getCalories)),Optional::get)));
 
 
-        PrintStream.print(mostCaloricPartitionedByVegetarian);
+        PrintUtil.print(mostCaloricPartitionedByVegetarian);
     }
 
 

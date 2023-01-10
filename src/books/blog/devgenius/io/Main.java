@@ -1,11 +1,9 @@
 package books.blog.devgenius.io;
 
-import books.ModernJavaInAction.model.Menu;
 import books.blog.devgenius.io.model.Order;
 import books.blog.devgenius.io.model.Product;
 import books.blog.devgenius.io.repo.OrderRepository;
 import books.blog.devgenius.io.repo.ProductRepository;
-import util.PrintStream;
 
 import java.time.LocalDate;
 import java.time.Month;

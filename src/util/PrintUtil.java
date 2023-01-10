@@ -1,13 +1,10 @@
 package util;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static books.ModernJavaInAction.model.Type.*;
-
-public class PrintStream {
+public class PrintUtil {
 
 
 

@@ -8,21 +8,20 @@ import books.deepcloudlabs.pair.DirectorGenrePair;
 import books.deepcloudlabs.pair.DirectorGenresPair;
 import books.deepcloudlabs.service.InMemoryDataService;
 import books.deepcloudlabs.service.MovieService;
-import util.PrintStream;
+import util.PrintUtil;
 
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
-import java.util.function.ToIntFunction;
+import java.util.function.Predicate;
 
+import static java.util.Comparator.comparingDouble;
 import static java.util.stream.Collectors.*;
 
 public class Main {
     private static final MovieService movieService = InMemoryDataService.getInstance();
     private static final CountryDao countryDao = InMemoryWorldDao.getInstance();
     private static final CityDao cityDao = InMemoryWorldDao.getInstance();
+    private static final WorldDao worldDao = InMemoryWorldDao.getInstance();
 
     public static void main(String[] args) {
         //Ex. 1  Find the number of movies of each director
@@ -132,17 +131,33 @@ public class Main {
                 .distinct()
                 .toList();
 
-
-        countriesWithCityCountInDescOrder.forEach(System.out::println);
-
-
-
+        //Ex. 7 Find the list of movies having the genres "Drama" and "Comedy" only
+        var listOfGenreNames = List.of("Drama", "Comedy");
+        var listOfGenres = listOfGenreNames.stream().map(movieService::findGenreByName).toList();
 
 
+        var moviesInDramaAndComedyOnly = movieService.findAllMovies().stream()
+                .filter( movie -> movie.getGenres().size() == 2)
+                .filter( movie -> movie.getGenres().containsAll(listOfGenres))
+                .toList();
 
-        //Ex. 7
-        //Ex. 8
-        //Ex. 9
+
+        //Ex. 8 Group the movies by the year and list them
+        var moviesByYear = movieService.findAllMovies().stream()
+                .collect(groupingBy(Movie::getYear));
+
+        //Ex. 9 Sort the countries by their population densities in descending order ignoring zero population countries
+        var countries = worldDao.findAllCountries();
+        Predicate<Country> countryPredicate = country -> country.getPopulation() == 0;
+
+
+        var countriesSortedByPopulationDensityDescOrder = countries.stream()
+                .filter(countryPredicate.negate())
+                .sorted(comparingDouble(country-> country.getPopulation() / country.getSurfaceArea()))
+                .distinct();
+
+        countriesSortedByPopulationDensityDescOrder.forEach(System.out::println);
+
         //Ex. 10
         //Ex. 11
         //Ex. 12
