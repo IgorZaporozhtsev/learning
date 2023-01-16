@@ -1,4 +1,8 @@
-package books.ModernJavaInAction.data_collection.inperative_approach;
+package books.ModernJavaInAction.data_aggreagation.inperative_approach;
+
+import books.ModernJavaInAction.model.Currency;
+import books.ModernJavaInAction.model.DataGenerator;
+import books.ModernJavaInAction.model.Transaction;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,22 +43,8 @@ public class MainDataCollection {
 
     public static void main(String[] args) {
 
-        List<Transaction> transactions = List.of(
-                new Transaction(Currency.EUR, 200),
-                new Transaction(Currency.EUR, 230),
-                new Transaction(Currency.USD, 125),
-                new Transaction(Currency.EUR, 435),
-                new Transaction(Currency.EUR, 920),
-                new Transaction(Currency.USD, 1340),
-                new Transaction(Currency.EUR, 124),
-                new Transaction(Currency.EUR, 434),
-                new Transaction(Currency.USD, 650),
-                new Transaction(Currency.EUR, 330),
-                new Transaction(Currency.EUR, 95)
-        );
 
-
-        aggregateTransactionByCurrency(transactions);
+        aggregateTransactionByCurrency(DataGenerator.getAllTransactions());
 
     }
 }

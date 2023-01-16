@@ -1,5 +1,6 @@
-package books.ModernJavaInAction.data_collection.func_approach;
+package books.ModernJavaInAction.data_aggreagation.func_approach;
 
+import books.ModernJavaInAction.model.DataGenerator;
 import books.ModernJavaInAction.model.Dish;
 import util.PrintUtil;
 
@@ -7,14 +8,13 @@ import util.PrintUtil;
 import java.util.List;
 import java.util.Optional;
 
-import static books.ModernJavaInAction.model.Menu.*;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
 
 public class Partitioning {
     public static void main(String[] args) {
-        List<Dish> menu = getMenu();
+        List<Dish> menu = DataGenerator.getMenu();
 
  /*
 

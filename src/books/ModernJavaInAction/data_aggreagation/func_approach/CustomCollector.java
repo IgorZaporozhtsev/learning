@@ -1,5 +1,6 @@
-package books.ModernJavaInAction.data_collection.func_approach;
+package books.ModernJavaInAction.data_aggreagation.func_approach;
 
+import books.ModernJavaInAction.model.DataGenerator;
 import books.ModernJavaInAction.model.Dish;
 
 import java.util.*;
@@ -9,11 +10,9 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
 
-import static books.ModernJavaInAction.model.Menu.getMenu;
-
 public class CustomCollector {
     public static void main(String[] args) {
-        List<Dish> menu = getMenu();
+        List<Dish> menu = DataGenerator.getMenu();
 
         List<Dish> dishes = menu.stream().collect(new ToListCollector<>());
         System.out.println(dishes.toString());

@@ -1,11 +1,11 @@
-package books.ModernJavaInAction.data_collection.func_approach;
+package books.ModernJavaInAction.data_aggreagation.func_approach;
 
 import books.ModernJavaInAction.model.Dish;
 
 
 import java.util.*;
 
-import static books.ModernJavaInAction.model.Menu.getMenu;
+import static books.ModernJavaInAction.model.DataGenerator.getMenu;
 
 import static java.util.stream.Collectors.*;
 

@@ -1,17 +1,17 @@
-package books.ModernJavaInAction.data_collection.inperative_approach;
-
+package books.ModernJavaInAction.model;
 
 
 public class Transaction {
 
-    public Transaction(Currency currency, int value) {
+    private Currency currency;
+    private int value;
+    private String referenceCode;
+
+    public Transaction(Currency currency, int value, String referenceCode) {
         this.currency = currency;
         this.value = value;
+        this.referenceCode = referenceCode;
     }
-
-    protected Currency currency;
-
-    protected int value;
 
 
     public Currency getCurrency() {
@@ -30,11 +30,20 @@ public class Transaction {
         this.value = value;
     }
 
+    public void setReferenceCode(String value){
+        this.referenceCode = value;
+    }
+
+    public String getReferenceCode(){
+        return referenceCode;
+    }
+
     @Override
     public String toString() {
         return "Transaction{" +
                 "currency=" + currency +
                 ", value=" + value +
+                "referenceCode=" + referenceCode +
                 '}';
     }
 }
