@@ -1,5 +1,6 @@
 package books.deepcloudlabs.exercises;
 
+import books.blog.devgenius.io.model.Product;
 import books.deepcloudlabs.dao.*;
 import books.deepcloudlabs.domain.*;
 import books.deepcloudlabs.pair.ContinentCityPair;
@@ -8,16 +9,19 @@ import books.deepcloudlabs.pair.DirectorGenrePair;
 import books.deepcloudlabs.pair.DirectorGenresPair;
 import books.deepcloudlabs.service.InMemoryDataService;
 import books.deepcloudlabs.service.MovieService;
+import books.deepcloudlabs.util.CountrySummaryStatistics;
 import util.PrintUtil;
 
 import java.util.*;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.*;
+import java.util.stream.IntStream;
 
+import static java.lang.Long.compare;
 import static java.util.Comparator.comparingDouble;
+import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
-public class Main {
+public class DeepCloudsMain {
     private static final MovieService movieService = InMemoryDataService.getInstance();
     private static final CountryDao countryDao = InMemoryWorldDao.getInstance();
     private static final CityDao cityDao = InMemoryWorldDao.getInstance();
@@ -148,20 +152,59 @@ public class Main {
 
         //Ex. 9 Sort the countries by their population densities in descending order ignoring zero population countries
         var countries = worldDao.findAllCountries();
-        Predicate<Country> countryPredicate = country -> country.getPopulation() == 0;
 
+        Predicate<Country> countryPredicate = country -> country.getPopulation() == 0;
 
         var countriesSortedByPopulationDensityDescOrder = countries.stream()
                 .filter(countryPredicate.negate())
                 .sorted(comparingDouble(country-> country.getPopulation() / country.getSurfaceArea()))
                 .distinct();
 
-        countriesSortedByPopulationDensityDescOrder.forEach(System.out::println);
 
         //Ex. 10
+        // Find the richest country of each continent with respect to their GNP (Gross National Product) values.
+        //<Continent, GNP>
+
+        var richestCountryByContinent = worldDao.findAllCountries().stream()
+                .collect(groupingBy(Country::getContinent, maxBy(comparingDouble(Country::getGnp))));
+
+
         //Ex. 11
+        // Find the minimum, the maximum and the average population of world countries
+        var populationSummary = worldDao.findAllCountries().stream()
+                .mapToInt(Country::getPopulation)
+                .summaryStatistics();
+
+        var populationSummary2 = worldDao.findAllCountries().stream()
+                .collect(summarizingInt(Country::getPopulation));
+
         //Ex. 12
+        // Find the minimum, the maximum and the average population of each continent.
+        var populationSummaryByContinent = worldDao.findAllCountries().stream()
+                .collect(groupingBy(Country::getContinent, summarizingLong(Country::getPopulation)));
+
+        //populationSummaryByContinent.forEach((continent, statistics) -> System.out.printf("%s: %s\n", continent, statistics));
+
         //Ex. 13
+        // Find the countries with the minimum and the maximum population
+        Supplier<CountrySummaryStatistics> countrySummaryStatisticsSupplier =
+                () -> new CountrySummaryStatistics(Comparator.comparingLong(Country::getPopulation));
+
+        var countrySummaryStatistics = worldDao.findAllCountries().stream()
+                .collect(countrySummaryStatisticsSupplier, CountrySummaryStatistics::accept, CountrySummaryStatistics::combine);
+        //System.out.println(countrySummaryStatistics);
+
+
+
+        Supplier<StringBuffer> supplier                 = StringBuffer::new;
+        ObjIntConsumer<StringBuffer> accumulator        = StringBuffer::append;
+        BiConsumer<StringBuffer, StringBuffer> combiner = StringBuffer::append;
+
+        StringBuffer collect =
+                IntStream.range(0, 10)
+                        .collect(supplier, accumulator, combiner);
+
+        System.out.println("collect = " + collect);
         //Ex. 14
         //Ex. 15
         //Ex. 16
@@ -169,6 +212,10 @@ public class Main {
 
 
     }
+
+
+
+
 
 }
 
