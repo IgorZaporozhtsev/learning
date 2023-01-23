@@ -1,7 +1,9 @@
 package books.deepcloudlabs.exercises;
 
-import books.blog.devgenius.io.model.Product;
-import books.deepcloudlabs.dao.*;
+import books.deepcloudlabs.dao.CityDao;
+import books.deepcloudlabs.dao.CountryDao;
+import books.deepcloudlabs.dao.InMemoryWorldDao;
+import books.deepcloudlabs.dao.WorldDao;
 import books.deepcloudlabs.domain.*;
 import books.deepcloudlabs.pair.ContinentCityPair;
 import books.deepcloudlabs.pair.CountryCityCountPair;
@@ -10,15 +12,12 @@ import books.deepcloudlabs.pair.DirectorGenresPair;
 import books.deepcloudlabs.service.InMemoryDataService;
 import books.deepcloudlabs.service.MovieService;
 import books.deepcloudlabs.util.CountrySummaryStatistics;
-import util.PrintUtil;
 
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.IntStream;
 
-import static java.lang.Long.compare;
 import static java.util.Comparator.comparingDouble;
-import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.*;
 
 public class DeepCloudsMain {
@@ -205,10 +204,8 @@ public class DeepCloudsMain {
                         .collect(supplier, accumulator, combiner);
 
         System.out.println("collect = " + collect);
-        //Ex. 14
-        //Ex. 15
-        //Ex. 16
-        //Ex. 17
+
+
 
 
     }
