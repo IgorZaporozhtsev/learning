@@ -1,4 +1,4 @@
-package algoexpert.arrays;
+package algoexpert.arrays.easy;
 
 import java.util.List;
 import java.util.Objects;

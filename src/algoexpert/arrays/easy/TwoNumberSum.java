@@ -1,4 +1,4 @@
-package algoexpert.arrays;
+package algoexpert.arrays.easy;
 
 import java.util.*;
 
@@ -6,7 +6,7 @@ public class TwoNumberSum {
     public static void main(String[] args) {
         int[] twoNumberSum = twoNumberSum(new int[]{3, 5, -4, 8, -1, 1, 11, 6}, 10);
         int[] twoNumberSum2 = twoNumberSum2(new int[]{-1, 11}, 10);
-        System.out.println(Arrays.toString(twoNumberSum2));
+        System.out.println(Arrays.toString(twoNumberSum));
     }
 
 
