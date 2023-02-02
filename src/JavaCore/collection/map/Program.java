@@ -32,6 +32,8 @@ public class Program {
         map1.put("Hello", 99);
 
 
+        map1.forEach((k, v) -> System.out.println(k + ": " + v));
+
 
     }
 

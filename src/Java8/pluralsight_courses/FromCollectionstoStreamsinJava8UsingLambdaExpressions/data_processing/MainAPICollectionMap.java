@@ -2,8 +2,12 @@ package Java8.pluralsight_courses.FromCollectionstoStreamsinJava8UsingLambdaExpr
 
 import Java8.pluralsight_courses.City;
 import Java8.pluralsight_courses.ImplementingDesignPatternsUsingJava8Lambda.comparator.Person;
+import util.PrintUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainAPICollectionMap {
     public static void main(String[] args) {
@@ -22,52 +26,43 @@ public class MainAPICollectionMap {
         City vancouver = new City("Vancouver");
         City london = new City("London");
 
-        Map<City, List<Person>> map = new HashMap<>();
-        map.putIfAbsent(paris, new ArrayList<>());
-        map.get(paris).add(person1);
+        Map<City, List<Person>> firstGroup = new HashMap<>();
+        firstGroup.putIfAbsent(paris, new ArrayList<>());
+        firstGroup.get(paris).add(person1);
 
-        map.computeIfAbsent(vancouver, city -> new ArrayList<>()).add(person2);
-        map.computeIfAbsent(vancouver, city -> new ArrayList<>()).add(person3);
+        firstGroup.computeIfAbsent(vancouver, city -> new ArrayList<>()).add(person2);
+        firstGroup.computeIfAbsent(vancouver, city -> new ArrayList<>()).add(person3);
 
+        System.out.println("---------------------------------------------- Map 1");
+        PrintUtil.printMapOfList(firstGroup);
 
-        System.out.println("People form Paris: " + map.getOrDefault(paris, Collections.emptyList()));
-        System.out.println("People form Paris: " + map.getOrDefault(vancouver, Collections.emptyList()));
+        Map<City, List<Person>> secondGroup = new HashMap<>();
 
+        secondGroup.computeIfAbsent(vancouver, city -> new ArrayList<>()).add(person1);
+        secondGroup.computeIfAbsent(london, city -> new ArrayList<>()).add(person2);
+        secondGroup.computeIfAbsent(london, city -> new ArrayList<>()).add(person3);
 
-        Map<City, List<Person>> map1 = new HashMap<>();
+        System.out.println("---------------------------------------------- Map 2");
+        PrintUtil.printMapOfList(secondGroup);
 
-        map1.computeIfAbsent(vancouver, city -> new ArrayList<>()).add(person1);
-        map1.computeIfAbsent(london, city -> new ArrayList<>()).add(person2);
-        map1.computeIfAbsent(london, city -> new ArrayList<>()).add(person3);
+        Map<City, List<Person>> thirdGroup = new HashMap<>();
 
-        System.out.println("Map 1");
+        thirdGroup.computeIfAbsent(vancouver, city -> new ArrayList<>()).add(person1);
+        thirdGroup.computeIfAbsent(london, city -> new ArrayList<>()).add(person2);
+        thirdGroup.computeIfAbsent(london, city -> new ArrayList<>()).add(person3);
 
-        map1.forEach((city, people) -> System.out.println(city + " : " + people));
+        System.out.println("----------------------------------------------- Map 3");
+        PrintUtil.printMapOfList(thirdGroup);
 
-
-        Map<City, List<Person>> map2 = new HashMap<>();
-
-        map2.computeIfAbsent(vancouver, city -> new ArrayList<>()).add(person1);
-        map2.computeIfAbsent(london, city -> new ArrayList<>()).add(person2);
-        map2.computeIfAbsent(london, city -> new ArrayList<>()).add(person3);
-
-        System.out.println("Map 2");
-
-        map2.forEach((city, people) -> System.out.println(city + " : " + people));
-
-        map2.forEach(
-            (city, people) -> {
-                map1.merge(city, people, (people1, people2) -> {
+        thirdGroup.forEach((city, people) ->
+                secondGroup.merge(city, people, (people1, people2) -> {
                     people1.addAll(people2);
                     return people1;
-                });
-            }
+                })
         );
 
-        System.out.println("Merged Map 1");
-        map1.forEach(
-            (city, people) -> System.out.println(city + ":" + people)
-        );
+        System.out.println("-------------------------------------------- Merged Map 2 and Map 3");
+        PrintUtil.printMapOfList(secondGroup);
 
     }
 }
