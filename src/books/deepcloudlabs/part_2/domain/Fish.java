@@ -33,4 +33,10 @@ public class Fish extends Animal implements Pet {
         System.out.println(String.format("%s is swimming now...", name));
     }
 
+    @Override
+    public String toString() {
+        return "Fish{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

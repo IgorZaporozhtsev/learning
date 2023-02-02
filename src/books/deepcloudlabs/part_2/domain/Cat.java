@@ -32,4 +32,10 @@ public class Cat extends Animal implements Pet {
         System.out.printf("%s is eating now...%n", name);
     }
 
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

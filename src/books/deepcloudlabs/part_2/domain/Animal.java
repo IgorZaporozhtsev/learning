@@ -1,5 +1,6 @@
 package books.deepcloudlabs.part_2.domain;
 
+
 public abstract class Animal {
     private int legs;
 
@@ -18,4 +19,11 @@ public abstract class Animal {
     }
 
     public abstract void eat(); // abstract method
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "legs=" + legs +
+                '}';
+    }
 }
