@@ -21,6 +21,27 @@ public class DC2MainEx8 {
                 .forEach(System.out::println);
 
         //System.out.println(totalNumberOfSpecies);
+
+
+        String str = "Print";
+
+        var result = switch (str) {
+            case null -> "";
+            case "Print" -> printHello();
+            case "Bye" -> printBye();
+
+            default -> throw new IllegalStateException("Unexpected value: " + str);
+        };
+    }
+
+    private static String printHello() {
+
+        return "Hello";
+    }
+
+    private static String printBye() {
+
+        return "Bye";
     }
 
 }
