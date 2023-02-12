@@ -18,6 +18,6 @@ public class RecursionExample {
             return;
         }
         System.out.println(n);
-        counter(n -1);
+        counter(n - 1);
     }
 }
