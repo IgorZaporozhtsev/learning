@@ -1,4 +1,4 @@
-package solid.openclosed;
+package solid.openclosed.ex1;
 
 import java.util.List;
 

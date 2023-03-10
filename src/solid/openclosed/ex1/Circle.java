@@ -1,4 +1,4 @@
-package solid.openclosed;
+package solid.openclosed.ex1;
 
 public class Circle implements Shape{
     private final int radius;

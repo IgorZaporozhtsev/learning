@@ -1,4 +1,4 @@
-package solid.openclosed;
+package solid.openclosed.ex1;
 
 public class Square implements Shape {
     private final int length;

@@ -1,7 +1,4 @@
-package solid.openclosed;
-
-import solid.singleresposibility.Circle;
-import solid.singleresposibility.Square;
+package solid.openclosed.ex1;
 
 import java.util.List;
 
