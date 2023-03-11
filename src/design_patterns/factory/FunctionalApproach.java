@@ -22,10 +22,10 @@ public class FunctionalApproach {
 
     public static void main(String[] args) {
         BankProduct loan = createProduct("loan");
-        System.out.println(loan.getClass().getSimpleName());
+        loan.publishData();
 
         BankProduct bond = createExpandedProduct("bond", "USD", 10, "day");
-        System.out.println(bond.getClass().getSimpleName());
+        bond.publishData();
 
     }
 
@@ -48,6 +48,7 @@ interface TriFunction<T, U, V, R> {
 }
 
 interface BankProduct {
+    void publishData();
 
 }
 
@@ -65,6 +66,14 @@ class Loan implements BankProduct {
     public Loan() {
 
     }
+
+    @Override
+    public void publishData() {
+        System.out.println(
+                "currency: " + currency + "\n" +
+                        "tax: " + tax + "\n" +
+                        "description: " + description);
+    }
 }
 
 class Stock implements BankProduct {
@@ -81,6 +90,14 @@ class Stock implements BankProduct {
     public Stock() {
 
     }
+
+    @Override
+    public void publishData() {
+        System.out.println(
+                "currency: " + currency + "\n" +
+                        "tax: " + tax + "\n" +
+                        "description: " + description);
+    }
 }
 
 class Bond implements BankProduct {
@@ -96,5 +113,13 @@ class Bond implements BankProduct {
 
     public Bond() {
 
+    }
+
+    @Override
+    public void publishData() {
+        System.out.println(
+                "currency: " + currency + "\n" +
+                        "tax: " + tax + "\n" +
+                        "description: " + description);
     }
 }
