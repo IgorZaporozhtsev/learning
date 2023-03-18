@@ -9,10 +9,7 @@ public class ChainResponsibilityMain {
         UnaryOperator<String> spellChecker = ChainResponsibilityMain::checkSpell;
         UnaryOperator<String> deleteSpaces = ChainResponsibilityMain::deleteSpaces;
         UnaryOperator<String> makeLowerCase = ChainResponsibilityMain::makeLowerCase;
-        Function<String, String> pipeline =
-                spellChecker
-                        .andThen(deleteSpaces)
-                        .andThen(makeLowerCase);
+        Function<String, String> pipeline = spellChecker.andThen(deleteSpaces).andThen(makeLowerCase);
 
         String someTextInApply = pipeline.apply(" ds      Some text in apply");
 
