@@ -1,0 +1,9 @@
+package JavaCore.interfaces.interface_problem.diamond_problem;
+
+public interface Child2 extends GrandParent {
+
+  default void move() {
+    System.out.println("I'm child 2");
+  }
+
+}
