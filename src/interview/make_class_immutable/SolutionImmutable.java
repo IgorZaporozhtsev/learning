@@ -2,23 +2,30 @@ package interview.make_class_immutable;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
+/**
+ * How to do that reservations.contains(new Reservation(1)) return true
+ * How to make class immutable, why we need class immutable
+ */
 
 class SolutionImmutable {
 
+
     public static void main(String[] args) {
 
+        var reservationImmutable = new ReservationImmutable(1);
+
         Set<ReservationImmutable> reservations = Set.of(
-                new ReservationImmutable(1),
+                reservationImmutable,
                 new ReservationImmutable(2),
                 new ReservationImmutable(3),
                 new ReservationImmutable(4),
                 new ReservationImmutable(5),
                 new ReservationImmutable(6)
         );
+        //reservationImmutable.id = 4;
+
         System.out.println(reservations.contains(new ReservationImmutable(1)));
     }
 
@@ -55,6 +62,21 @@ class SolutionImmutable {
 
         public List<LocalDate> getReservationDates() {
             return reservationDates;
+        }
+
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            ReservationImmutable that = (ReservationImmutable) o;
+            return id == that.id && Objects.equals(clientFullName, that.clientFullName)
+                    && Objects.equals(reservationDates, that.reservationDates);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(id, clientFullName, reservationDates);
         }
     }
 

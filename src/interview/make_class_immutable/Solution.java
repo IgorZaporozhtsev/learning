@@ -5,18 +5,26 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * How to do that reservations.contains(new Reservation(1)) return true
+ * How to make class immutable, why we need class immutable
+ */
+
 class Solution {
 
     public static void main(String[] args) {
+        var reservation = new Reservation(1);
 
         Set<Reservation> reservations = Set.of(
-                new Reservation(1),
+                reservation,
                 new Reservation(2),
                 new Reservation(3),
                 new Reservation(4),
                 new Reservation(5),
                 new Reservation(6)
         );
+
+        reservation.id = 3;
         System.out.println(reservations.contains(new Reservation(1)));
     }
 
