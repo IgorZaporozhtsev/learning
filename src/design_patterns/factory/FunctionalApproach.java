@@ -30,8 +30,8 @@ public class FunctionalApproach {
     }
 
     public static BankProduct createProduct(String name) {
-        Supplier<BankProduct> p = simpleMap.get(name);
-        if (p != null) return p.get();
+        Supplier<BankProduct> productSupplier = simpleMap.get(name);
+        if (productSupplier != null) return productSupplier.get();
         throw new IllegalArgumentException("No such product " + name);
     }
 

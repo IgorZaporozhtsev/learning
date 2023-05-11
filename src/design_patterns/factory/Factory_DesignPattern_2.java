@@ -4,6 +4,7 @@ public class Factory_DesignPattern_2 {
     public static void main(String[] args) {
         WatchMaker watchMaker = new ConcreteDigitalWatch();
         Watch watch = watchMaker.createWatch();
+        watch.showTime();
         // этот код не будет меняться если мы поменяем на  new ConcreteAnalogWatch();
     }
 }

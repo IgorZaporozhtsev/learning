@@ -1,5 +1,7 @@
 package JavaCore.collection.tree;
 
+import JavaCore.collection.stack.SimpleStack;
+
 public class TreeTraversal {
     public static void main(String[] args) {
         Tree root =
@@ -16,9 +18,11 @@ public class TreeTraversal {
                                         new Tree(38),
                                         new Tree(52))));
 
-        System.out.println(root.sum());
+        //System.out.println(root.sum());
+        System.out.println(sumDeep(root));
     }
 
+    //recursion
     static class Tree {
         int value;
         Tree left;
@@ -41,11 +45,40 @@ public class TreeTraversal {
                 sum += left.sum(); //рекурсивно вызываем сумму на каждом ребре
             }
 
-            if (right != null){
+            if (right != null) {
                 sum += right.sum();
             }
 
             return sum;
         }
     }
+
+    //iterate
+    public static int sumDeep(Tree root) {
+        SimpleStack<Tree> stack = new SimpleStack<>();
+        stack.push(root);
+
+        int sum = 0;
+
+        while (!stack.isEmpty()) {
+            Tree node = stack.pop();
+
+            System.out.println(node.value);
+
+            sum = sum + node.value;
+
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+        }
+
+        return sum;
+
+
+    }
+
 }
