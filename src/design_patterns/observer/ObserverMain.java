@@ -5,11 +5,8 @@ import java.util.List;
 
 interface Observed {
     void addObserver(Observer o);
-
     void removeObserver(Observer o);
-
     void notifyObservers();
-
     void setMeasurements(int t, int p);
 }
 
@@ -19,17 +16,19 @@ interface Observer {
 
 public class ObserverMain {
     public static void main(String[] args) {
-        Observed meteoStation = new MeteoStation();
-        meteoStation.addObserver(new ConsoleObserver());
-        meteoStation.setMeasurements(23, 200);
+        Observed meteoStation = new ClimateControlSystem();
+        meteoStation.addObserver(new AirFresherObserver());
+        meteoStation.addObserver(new HeatingSystemObserver());
+        meteoStation.setMeasurements(43, 200);
     }
 }
 
-class MeteoStation implements Observed {
+
+class ClimateControlSystem implements Observed {
     int temperature;
     int pressure;
 
-    List<Observer> observers = new ArrayList<>();
+    List<Observer> observers = new ArrayList<>(); //listeners
 
     @Override
     public void addObserver(Observer o) {
@@ -55,13 +54,28 @@ class MeteoStation implements Observed {
     }
 }
 
-class ConsoleObserver implements Observer {
-
+//Listener
+class HeatingSystemObserver implements Observer {
     @Override
     public void handleEvent(int temp, int presser) {
-        System.out.println("Погода изменилася. Температура = " + temp + ", Давление = " + presser);
+        System.out.println( this.getClass().getSimpleName() + " Погода изменилася. Температура = " + temp + ", Давление = " + presser);
+        if(temp > 10){
+            System.out.println("decreasing temperature - 10 C");
+        } else {
+            System.out.println("increasing temperature + 10 C");
+        }
     }
 }
 
+//Listener
+class AirFresherObserver implements Observer {
+    @Override
+    public void handleEvent(int temp, int presser) {
+        System.out.println( this.getClass().getSimpleName() + " Погода изменилася. Температура = " + temp + ", Давление = " + presser);
+        if(temp > 10){
+            System.out.println("start freshening air");
+        }
+    }
+}
 
 
