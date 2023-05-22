@@ -13,11 +13,11 @@ public class RecursionExample {
     //  | counter(2) |
     //  | counter(1) |
 
-    private static void counter(int n){
-        if (n == 0){
-            return;
+    private static int counter(int n) {
+        if (n == 0) {
+            return n;
         }
         System.out.println(n);
-        counter(n - 1);
+        return counter(n - 1);
     }
 }
