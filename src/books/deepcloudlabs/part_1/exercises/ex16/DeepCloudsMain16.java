@@ -4,10 +4,9 @@ import books.deepcloudlabs.part_1.dao.InMemoryWorldDao;
 import books.deepcloudlabs.part_1.dao.WorldDao;
 import books.deepcloudlabs.part_1.domain.Country;
 import books.deepcloudlabs.part_1.util.CountryCitySummaryStatistics;
+
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class DeepCloudsMain16 {
     private static final WorldDao worldDao = InMemoryWorldDao.getInstance();
@@ -21,13 +20,5 @@ public class DeepCloudsMain16 {
         // Find the cities with the minimum and the maximum population in countries.
         //<String, CountryCitySummaryStatistics>
 
-
-        var countryCityStatistics = worldDao.findAllCountries().stream()
-                        .collect(Collectors.groupingBy(
-                                Country::getCode,
-                                Collector.of(CountryCitySummaryStatistics::new, accumulator, combiner)));
-
-
-        countryCityStatistics.forEach(printEntry);
     }
 }
