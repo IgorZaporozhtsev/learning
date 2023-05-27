@@ -2,7 +2,6 @@ package JavaCore.HashCode_Equals.map;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 public class HashingTest {
 
@@ -22,7 +21,7 @@ public class HashingTest {
     }
 
     private static Map<DataKey, Integer> getAllData() {
-        Map<DataKey, Integer> hm = new HashMap<>();
+        Map<DataKey, Integer> hm = new HashMap<>(2);
 
         DataKey dk = new DataKey();
         dk.setId(1);
@@ -61,7 +60,7 @@ public class HashingTest {
             return "DataKey [name=" + name + ", id=" + id + "]";
         }
 
-        @Override
+      /*  @Override
         public boolean equals(Object obj) {
             if (this == obj) return true;
             if (obj == null || this.getClass() != obj.getClass()) return false;
@@ -72,6 +71,6 @@ public class HashingTest {
         @Override
         public int hashCode() {
             return Objects.hash(name, id);
-        }
+        }*/
     }
 }

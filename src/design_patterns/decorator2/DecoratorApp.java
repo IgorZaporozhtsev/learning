@@ -1,9 +1,11 @@
 package design_patterns.decorator2;
-
+//Open Close Principle
 public class DecoratorApp {
     public static void main(String[] args) {
-        PrinterInterface printerInterface = new QuotesDecorator(new Printer("Привет"));
-        printerInterface.print();
+        PrinterInterface oldBehavior = new Printer("print Привет");
+        PrinterInterface newBehaviorWithQuotes = new QuotesDecorator(new Printer("print with quotes Привет"));
+        oldBehavior.print();
+        newBehaviorWithQuotes.print();
     }
 }
 
@@ -34,8 +36,9 @@ class QuotesDecorator implements PrinterInterface {
 
     @Override
     public void print() {
-        System.out.print("\"");
+        System.out.println();
+        System.out.print("\""); //add additional logic
         component.print();
-        System.out.print("\"");
+        System.out.print("\""); //add additional logic
     }
 }
