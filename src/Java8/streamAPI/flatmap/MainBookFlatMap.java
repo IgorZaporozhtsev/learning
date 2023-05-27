@@ -2,6 +2,7 @@ package Java8.streamAPI.flatmap;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MainBookFlatMap {
     public static void main(String[] args) {
@@ -21,10 +22,10 @@ public class MainBookFlatMap {
 
         Set<String> collect =
             list.stream()
-                .map(Developer::getBook)                              //  Stream<Set<String>>
-                .flatMap(Collection::stream)                           //  Stream<String>
-                .filter(x -> !x.toLowerCase().contains("python"))   //  filter python book
-                .collect(Collectors.toSet());                       //  remove duplicated
+                .map(Developer::getBook)
+                .flatMap(Collection::stream)
+                .filter(x -> !x.toLowerCase().contains("python"))
+                .collect(Collectors.toSet());
 
         collect.forEach(System.out::println);
 
