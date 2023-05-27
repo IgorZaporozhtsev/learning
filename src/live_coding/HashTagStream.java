@@ -34,7 +34,7 @@ public class HashTagStream {
     private static List<String> retrieveTags(List<String> twits) {
         return twits.stream()
                 .map(t -> t.split(" "))
-                .flatMap(Stream::of) //Arrays::stream
+                .flatMap(Stream::of) //in implementation it uses Arrays::stream
                 .filter(s -> s.contains("#"))
                 .toList();
     }
