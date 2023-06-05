@@ -1,6 +1,8 @@
 package algoexpert.leetcode.strings.validparentheses;
 
 
+import java.util.Stack;
+
 public class ValidParenthesesTry1 {
 
     public static void main(String[] args) {

@@ -7,6 +7,7 @@ public class ValidParenthesesLeetCode {
     public static void main(String[] args) {
         // in this task you string represent in Stack
 
+        System.out.println("1. false = " + isValid("(("));
 //        System.out.println("1. true = " + isValid("()"));
 //        System.out.println("2. true = " + isValid("()[]{}"));
 //        System.out.println("3. false = " + isValid("(]"));

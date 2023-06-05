@@ -5,7 +5,12 @@ import books.blog.devgenius.io.model.Product;
 import books.blog.devgenius.io.repo.OrderRepository;
 import books.blog.devgenius.io.repo.ProductRepository;
 
+import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -16,16 +21,43 @@ public class Main {
     public static void main(String[] args) {
 
         //Exercise 1 - Obtain a list of products belongs to category “Books” with price > 100
+        products.stream()
+                .filter(product -> product.getCategory().equals("Books"))
+                .filter(product -> product.price > 100)
+                .toList();
 
 
         //Exercise 2 - Obtain a list of order with products belong to category “Baby”
 
+        orders.stream()
+                .filter(order -> order.getProducts()
+                        .stream()
+                        .anyMatch(product -> product.getCategory().equals("Baby")))
+                .toList();
+
         //Exercise 3 - Obtain a list of product with category = “Toys” and then apply 10% discount
+
+        products.stream()
+                .filter(product -> product.getCategory().equalsIgnoreCase("Toys"))
+                .map(product -> product.withPrice(product.getPrice() * 0.9))
+                .toList();
+
 
         //Exercise 4 - Obtain a list of products ordered by customer of tier 2 between 01-Feb-2021 and 01-Apr-2021
 
-        //Exercise 5 - Get the cheapest products of “Books” category
+        orders.stream()
+                .filter(order -> order.customer.tier == 2)
+                .filter(order -> order.getOrderDate().isAfter(LocalDate.of(2021, 02, 01)))
+                .filter(order -> order.getOrderDate().isBefore(LocalDate.of(2021, 04, 01)))
+                .map(Order::getProducts)
+                .flatMap(Collection::stream)
+                .distinct()
+                .toList();
 
+        //Exercise 5 - Get the cheapest products of “Books” category
+        products.stream()
+                .filter(category -> category.getCategory().equalsIgnoreCase("books"))
+                .min(Comparator.comparing(Product::getPrice));
         //Exercise 6 - Get the 3 most recent placed order
 
         //Exercise 7 - Get a list of orders which were ordered on 15-Mar-2021,
@@ -50,7 +82,6 @@ public class Main {
         //Exercise 15 Get the most expensive product by category
 
     }
-
 
 
 }

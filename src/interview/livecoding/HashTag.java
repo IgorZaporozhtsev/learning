@@ -1,4 +1,4 @@
-package live_coding;
+package interview.livecoding;
 
 import java.util.*;
 
