@@ -9,49 +9,18 @@ public class RemoveElement {
     //Input: nums = [0,1,2,2,3,0,4,2], val = 2
     //Output: 5, nums = [0,1,4,0,3,_,_,_]
     public static int removeElement(int[] nums, int val) {
-        System.out.println("input: "+ Arrays.toString(nums));
-        int count=0;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]!= val){
-                nums[count]=nums[i];
-                count++;
+        System.out.println("input: " + Arrays.toString(nums));
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val){
+                nums[count++] = nums[i];
             }
         }
-        System.out.println("output: " + Arrays.toString(nums) + "\n count: " + count);
+        System.out.println("output: " + Arrays.toString(nums));
         return count;
     }
 
-    public static int removeElement1(int[] nums, int val) {
 
-
-        if (nums.length == 1 && nums[0] == val){
-            int arr []= { };
-            nums = arr;
-        } else if (nums.length == 1 && nums[0] != val){
-
-        }
-
-        int count = 0;
-        int blue = nums.length - 1;
-
-        for (int green = 0; green < nums.length; green++) {
-            if (nums[blue] == val){
-                if (blue != 0){
-                    blue--;
-                }
-            }
-            if (nums[green] == val) {
-                nums[green] = nums[blue];
-                if (blue != 0){
-                    blue--;
-                }
-                count++;
-            }
-        }
-
-        System.out.println(Arrays.toString(nums));
-        return nums.length - count;
-    }
 
 
     public static void main(String[] args) {
