@@ -1,7 +1,6 @@
 package JavaCore.collection.map.map;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 public class MapEqHashMain {
     public static void main(String[] args) {
