@@ -22,10 +22,10 @@ public class MutableObjectAsKey {
         MutableObjectAsKey person = (MutableObjectAsKey) o;
         return Objects.equals(name, person.name);
     }
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(name);
-//    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 
 
     @Override
@@ -39,8 +39,8 @@ public class MutableObjectAsKey {
         var map = new HashMap<MutableObjectAsKey, String>(2);
         //sameHash(map);
         //withoutOwnEqHash(map);
-        //retriveMutableWithNotExistedHasCode(map);
-        tryRetrieveAbandoneMutableObject(map);
+        retriveMutableWithNotExistedHasCode(map);
+        //tryRetrieveAbandoneMutableObject(map);
     }
 
    //if we don't have same hashcode, Node go to same index. It calls collision
@@ -86,7 +86,12 @@ public class MutableObjectAsKey {
         //try to retrieve person with no existed hashCode
         var retriedPerson = map.get(person1);
         System.out.println("retrieved person is:  " + retriedPerson);
+        person1.name = "Justin";
+        var retriedPerson2 = map.get(person1);
+        System.out.println("retrieved person is:  " + retriedPerson2);
         System.out.println("map size " + map.size());
+        map.forEach((k, v) -> System.out.println("key - " + k + " : " + "value - " + v));
+
     }
 
     //put twice to map with different hashcode// There is no Abandoned object we we REPLACE link to obj
