@@ -1,4 +1,4 @@
-package algoexpert.leetcode.arrays;
+package algoexpert.leetcode.arrays.two_pointers;
 
 import java.util.Arrays;
 
