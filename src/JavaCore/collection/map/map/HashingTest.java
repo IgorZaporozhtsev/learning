@@ -1,4 +1,4 @@
-package JavaCore.HashCode_Equals.map;
+package JavaCore.collection.map.map;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -10,6 +10,7 @@ public class MutableObjectAsKey {
 
     public MutableObjectAsKey() {
     }
+
     public MutableObjectAsKey(String name) {
         this.name = name;
     }
@@ -21,10 +22,10 @@ public class MutableObjectAsKey {
         MutableObjectAsKey person = (MutableObjectAsKey) o;
         return Objects.equals(name, person.name);
     }
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(name);
+//    }
 
 
     @Override
@@ -42,9 +43,9 @@ public class MutableObjectAsKey {
         tryRetrieveAbandoneMutableObject(map);
     }
 
-    //if we don't have same hashcode, Node go to same index. It calls collision
+   //if we don't have same hashcode, Node go to same index. It calls collision
     private static void sameHash(HashMap<MutableObjectAsKey, String> map){
-     /*   @Override
+      /* @Override
         public int hashCode() {
             return 1;
         }*/
@@ -88,20 +89,26 @@ public class MutableObjectAsKey {
         System.out.println("map size " + map.size());
     }
 
-    //put twice to map with different hashcode
+    //put twice to map with different hashcode// There is no Abandoned object we we REPLACE link to obj
     private static void tryRetrieveAbandoneMutableObject(HashMap<MutableObjectAsKey, String> map) {
         var person1 = new MutableObjectAsKey();
         person1.name = "Justin";
         System.out.println("Person 1 has name : " + person1.name + " hashCode is: " + person1.hashCode());
 
+
         //set different name, and put object one more time, old Person was Abandone
         map.put(person1, "old Person");
+
         person1.name = "Richard";
         System.out.println("Person 1 has name : " + person1.name + " hashCode is: " + person1.hashCode());
-        map.put(person1, "new Person");
+        map.put(person1, "new Person"); //we REPLACE link!!!
 
         var pers = map.get(person1);
-        System.out.println("retrieved person is: " + pers); //old Person is noo accessible by key
+        System.out.println("retrieved person is: " + pers);
         System.out.println("map size " + map.size());
+
+        map.forEach((k, v) -> System.out.println("key - " + k + " : " + "value - " + v));
+
     }
+
 }
