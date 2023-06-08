@@ -1,14 +1,18 @@
 package JavaCore.collection.set;
 
+import java.util.HashSet;
+
 public class SetPresentRemove {
     public static void main(String[] args) {
-/*
-        var strings = new HashSet<String>();
-        strings.add("first");
-        strings.add("second");
+        var set = new HashSet<String>();
+        set.add("first");
+        set.add("second");
 
-        strings.remove(null);
-        */
+        for (String s : set) {
+            System.out.println(s);
+        }
+
+        set.remove(null);
 
 
     }

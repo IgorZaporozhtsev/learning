@@ -40,9 +40,8 @@ public class HashTagStream {
     }
 
    private static Map<String, Long> collectToMap(List<String> list) {
-       Collector<String, ?, Map<String, Long>> stringMapCollector = groupingBy(Function.identity(), counting());
        return list.stream()
-                .collect(stringMapCollector)
+                .collect(groupingBy(Function.identity(), counting()))
                 .entrySet()
                 .stream()
                 .sorted(Comparator.comparingLong(Map.Entry::getValue))
