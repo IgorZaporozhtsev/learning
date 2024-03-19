@@ -3,8 +3,8 @@ package JavaCore.try_catch;
 public class ExceptionQuestions {
 
     public static void main(String[] args) throws Throwable {
-        foo2();
-        //foo1();
+        //foo2();
+        foo1();
     }
 
     static class Person implements AutoCloseable{

@@ -1,5 +1,6 @@
 package interview.livecoding;
 
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -29,7 +30,8 @@ public class Main {
         }
 
         list.addAll(col);
-        System.out.println(list.stream().sorted(Comparator.comparing(Record::getTs)).toList());
+        System.out.println(list.stream()
+                .sorted(Comparator.comparing(Record::getTs)).toList());
 
     }
 
