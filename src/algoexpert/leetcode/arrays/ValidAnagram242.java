@@ -1,4 +1,4 @@
-package algoexpert.leetcode;
+package algoexpert.leetcode.arrays;
 
 import algoritms.sort.InsertionSort;
 
