@@ -30,32 +30,4 @@ public class GroupAnagrams49 {
         }
         return new ArrayList<>(map.values());
     }
-    public static List<List<String>> groupAnagrams(String[] strs) {
-
-        ArrayList<List<String>> strings = new ArrayList<>();
-        for (int i = 0; strs.length > i ;i++) {
-            char[] ichars = strs[i].toCharArray();
-            Arrays.sort(ichars);
-
-            ArrayList<String> stList = new ArrayList<>();
-            stList.add(strs[i]);
-
-            for (int j = i + 1; j < strs.length; j++) {
-                char[] jchars = strs[j].toCharArray();
-                Arrays.sort(jchars);
-
-                if (Arrays.toString(ichars).equals(Arrays.toString(jchars))) {
-                    System.out.println("equal");
-                    stList.add(strs[j]);
-                }
-            }
-            strings.add(stList);
-        }
-        List<List<String>> arrayLists = new ArrayList<List<String>>(strings);
-
-
-        return arrayLists;
-    }
-
-
 }
