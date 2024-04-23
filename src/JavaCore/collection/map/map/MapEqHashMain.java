@@ -1,6 +1,7 @@
 package JavaCore.collection.map.map;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class MapEqHashMain {
     public static void main(String[] args) {
@@ -46,7 +47,8 @@ class MyClass {
 
     @Override
     public int hashCode() {
-        return 1;//Objects.hash(importantField, anotherField);
+        //return 1;
+        return Objects.hash(importantField, anotherField);
     }
 
 
@@ -60,22 +62,22 @@ class MyClass {
     }*/
 
 
-/*    @Override
-    public boolean equals(final Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        final MyClass other = (MyClass) obj;
-        if (importantField == null) {
-            if (other.importantField != null)
-                return false;
-        } else if (!importantField.equals(other.importantField))
-            return false;
-        return true;
-    }*/
+//    @Override
+//    public boolean equals(final Object obj) {
+//        if (this == obj)
+//            return true;
+//        if (obj == null)
+//            return false;
+//        if (getClass() != obj.getClass())
+//            return false;
+//        final MyClass other = (MyClass) obj;
+//        if (importantField == null) {
+//            if (other.importantField != null)
+//                return false;
+//        } else if (!importantField.equals(other.importantField))
+//            return false;
+//        return true;
+//    }
 
 
     @Override
