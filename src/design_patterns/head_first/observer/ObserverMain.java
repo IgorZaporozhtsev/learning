@@ -32,12 +32,12 @@ interface DisplayElement{
 
 class WeatherData implements Subject{
 
-    private final List<Observer> observers;
+    private final List<Observer> observers; // Subject hold observers
     float temperature;
     float humidity;
     float pressure;
 
-    WeatherData() {
+    WeatherData() { //init list for Observers
         this.observers = new ArrayList<>();
     }
 
@@ -53,7 +53,10 @@ class WeatherData implements Subject{
 
     @Override
     public void notifyObservers() {
-        observers.forEach(observer -> observer.update());
+        observers.forEach(Observer::update);
+        //trigger all Observer in thr list to notify each Observer that data has been changed (through setMeasurement)
+        //by calling update method for each one
+        //then each Observer in update method can getter data from WeatherData what its need
     }
 
     private void measurementChanged(){
@@ -84,7 +87,7 @@ class CurrentConditionsDisplay implements Observer, DisplayElement{
     float temperature;
     float humidity;
     float pressure;
-    private WeatherData weatherData;
+    private final WeatherData weatherData; //Observer has the link to Subject so can use getter to retrive data
 
     public CurrentConditionsDisplay(WeatherData weatherData) {
         this.weatherData = weatherData;
