@@ -13,14 +13,32 @@ public class UsingComparableInterface {
         list.add(new Movie("Empire Strikes Back", 8.8, 1980));
         list.add(new Movie("Return of the Jedi", 8.4, 1983));
 
+    /*
+                                    *** 1st approach ***
+        -  Movie implements Comparable<Movie>
+        - implement compareTo method
 
-        //1st approach
-        // -  Movie implements Comparable<Movie>
-        // - implement compareTo method
-        //2nd approach
-        //-  Movie doesn't implements Comparable<Movie> and compareTo method
-       // - write this code where we define on which fields we compare
-        // - Collections.sort(list, Comparator.comparing(Movie::getYear));
+                                    *** 2nd approach ***
+        - using Java 8
+        - Movie doesn't implement Comparable<Movie> and compareTo method
+        - write this code where we define on which fields we compare
+        - Collections.sort(list, Comparator.comparing(Movie::getYear));
+
+                                    *** 3rd approach ****
+
+        -  Movie doesn't implement Comparable<Movie> and compareTo method
+        - create separate comparator for field we want to compare
+        - Class to compare Movies by name
+
+            class NameCompare implements Comparator<Movie> {
+                public int compare(Movie m1, Movie m2)
+                {
+                    return m1.getName().compareTo(m2.getName());
+                }
+            }
+    */
+
+
 
 
 
@@ -38,7 +56,7 @@ class Movie implements Comparable<Movie> {
 
     // Used to sort movies by year
     public int compareTo(Movie m) {
-        return this.year - m.year;
+        return this.name.compareTo(m.name);
     }
 
     // Constructor
