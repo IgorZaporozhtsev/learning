@@ -40,11 +40,13 @@ public class HashTagStream {
     }
 
    private static Map<String, Long> collectToMap(List<String> list) {
-       return list.stream()
-                .collect(groupingBy(Function.identity(), counting()))
-                .entrySet()
-                .stream()
-                .sorted(Comparator.comparingLong(Map.Entry::getValue))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,(a,b) -> b, LinkedHashMap::new));
+       Map<String, Long> collect = list.stream()
+               .collect(groupingBy(Function.identity(), counting()));
+       LinkedHashMap<String, Long> collect1 = collect
+               .entrySet()
+               .stream()
+               .sorted(Comparator.comparingLong(Map.Entry::getValue))
+               .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (a, b) -> b, LinkedHashMap::new));
+       return collect1;
     }
 }

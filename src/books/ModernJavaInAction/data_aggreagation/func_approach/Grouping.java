@@ -119,4 +119,9 @@ public class Grouping {
         Map<Type, List<Dish>> groupByType = menu.stream().collect(groupingBy(Dish::getType, toList()));
     }
 
+
+//toMap
+
+
+
 }

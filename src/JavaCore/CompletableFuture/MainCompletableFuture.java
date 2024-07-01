@@ -69,6 +69,7 @@ public class MainCompletableFuture {
 
                                         /* COMBINE 2 thenCompose */
         //thenCompose we can use result of first future in second future
+        //FYI thenComposeAsync - just make call in different thread
         CompletableFuture<String> first1 = CompletableFuture.supplyAsync( () ->
                 notifyService.notifyWithReturn()
         ).thenApplyAsync(String::toUpperCase);

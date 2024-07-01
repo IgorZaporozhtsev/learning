@@ -43,7 +43,7 @@ public class MainReduce {
 
         BigDecimal totalPrice2 = products.stream()
                 .map(Product::getPrice)
-                .reduce(BigDecimal::add)
+                .reduce((bigDecimal, augend) -> bigDecimal.add(augend))
                 .orElse(BigDecimal.ZERO);
 
         //System.out.println("Total price of products: $" + totalPrice2);

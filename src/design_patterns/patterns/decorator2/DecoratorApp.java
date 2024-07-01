@@ -3,7 +3,7 @@ package design_patterns.patterns.decorator2;
 public class DecoratorApp {
     public static void main(String[] args) {
         PrinterInterface oldBehavior = new Printer("print Привет");
-        PrinterInterface newBehaviorWithQuotes = new QuotesDecorator(new Printer("print with quotes Привет"));
+        PrinterInterface newBehaviorWithQuotes = new QuotesDecorator(new BracketsDecorator(new Printer("print with quotes Привет")));
         oldBehavior.print();
         newBehaviorWithQuotes.print();
     }
@@ -40,5 +40,21 @@ class QuotesDecorator implements PrinterInterface {
         System.out.print("\""); //add additional logic
         component.print();
         System.out.print("\""); //add additional logic
+    }
+}
+
+class BracketsDecorator implements PrinterInterface{
+
+    private PrinterInterface component;
+
+    public BracketsDecorator(PrinterInterface component) {
+        this.component = component;
+    }
+
+    @Override
+    public void print() {
+        System.out.print("[");
+        component.print();
+        System.out.print("]");
     }
 }
