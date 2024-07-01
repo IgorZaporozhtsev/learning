@@ -10,7 +10,18 @@ public class DecoratorMain {
         darkRoast = new Soy(darkRoast);
         darkRoast = new Whip(darkRoast);
 
-        //2-nd approach
+
+    /*
+
+    2-nd approach
+
+        Beverage darkRoast = new DarkRoast(Size.TALL);
+        Mocha mocha = new Mocha(darkRoast);
+        Soy soy = new Soy(mocha);
+        Whip whip = new Whip(soy);
+    */
+
+        //3-rd approach
 //        Beverage darkRoast = new Whip(new Soy(new Mocha(new DarkRoast(Size.TALL))));
 
         double beverageCost = darkRoast.cost();
