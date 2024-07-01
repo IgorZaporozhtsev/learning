@@ -2,11 +2,15 @@ package design_patterns.head_first.decorator;
 
 public class DecoratorMain {
     public static void main(String[] args) {
+        //Its behave like linked list that bind different decorators
+
+        //1-st approach
         Beverage darkRoast = new DarkRoast(Size.TALL);
         darkRoast = new Mocha(darkRoast);
         darkRoast = new Soy(darkRoast);
         darkRoast = new Whip(darkRoast);
 
+        //2-nd approach
 //        Beverage darkRoast = new Whip(new Soy(new Mocha(new DarkRoast(Size.TALL))));
 
         double beverageCost = darkRoast.cost();
