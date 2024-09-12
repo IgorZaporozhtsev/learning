@@ -11,7 +11,8 @@ public class RemoveDuplicatesfromSortedArray {
 
     public static void main(String[] args) {
         int[] array = { 0,0,1,1,1,2,2,3,3,4 };
-        System.out.println(removeDuplicates(array));
+        int[] array2 = {1,1,2};
+        System.out.println(removeDuplicates2(array));
     }
   /*
 
@@ -25,23 +26,16 @@ public class RemoveDuplicatesfromSortedArray {
 
  */
 
+    public static int removeDuplicates2(int[] nums){
 
-    public static int removeDuplicates(int[] nums) {
+        int left_pointer = 1;
 
-        int unique = 1;
-
-        for(int i = 1; i<nums.length; i++) {
-
-            var current = nums[i];
-            var previous = nums[i - 1];
-
-            if (current != previous) {
-                nums[unique] = nums[i];
-                unique++;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i - 1]){
+                nums[left_pointer] = nums[i];
+                left_pointer++;
             }
-            System.out.println(Arrays.toString(nums));
         }
-        return unique;
-
+        return left_pointer;
     }
 }

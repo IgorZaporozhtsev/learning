@@ -6,10 +6,9 @@ import java.util.Objects;
 public class ValidateSubsequence {
 
     public static void main(String[] args) {
-        boolean isValid = isValidSubsequence(
-                List.of(5, 1, 22, 25, 6, -1, 8, 10),
-                null
-                //List.of(22, 25, 6)
+        boolean isValid = isValidSubsequence2(
+                List.of(1, 1, 6, 1),
+                List.of(1, 1, 1, 6)
         );
         System.out.println(isValid);
 
@@ -40,5 +39,20 @@ public class ValidateSubsequence {
 
     public static boolean compare2(String str1, String str2) {
         return (Objects.equals(str1, str2));
+    }
+
+
+    public static boolean isValidSubsequence2(List<Integer> array, List<Integer> sequence){
+        int arrIdx = 0;
+        int seqIdx = 0;
+
+        while(arrIdx < array.size() && seqIdx < sequence.size()){
+            if(array.get(arrIdx).equals(sequence.get(seqIdx))){
+                seqIdx = seqIdx + 1;
+            }
+            arrIdx = arrIdx + 1;
+
+        }
+        return seqIdx == sequence.size();
     }
 }
