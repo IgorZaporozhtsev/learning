@@ -19,8 +19,37 @@ public class ValidParenthesesTry1 {
         System.out.println("11. false = " + isValid("({{{{}}}))"));
     }
 
-    private static boolean isValid(String s) {
+    private static boolean isValid(String strings) {
+        Stack<Character> stack = new Stack<>();
 
-        return false;
+        char[] chars = strings.toCharArray();
+
+
+        for (char aChar : chars) {
+
+            switch (aChar) {
+                case '{', '(', '[' -> stack.push(aChar);
+                case '}' -> {
+                    if (stack.isEmpty() || stack.pop() != '{') {
+                        return false;
+                    }
+                }
+                case ')' -> {
+                    if (stack.isEmpty() || stack.pop() != '(') {
+                        return false;
+                    }
+                }
+                case ']' -> {
+                    if (stack.isEmpty() || stack.pop() != '[') {
+                        return false;
+                    }
+                }
+
+
+            }
+        }
+
+        return stack.isEmpty();
+
     }
 }
