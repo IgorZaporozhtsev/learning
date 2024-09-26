@@ -1,4 +1,4 @@
-package algoexpert.leetcode.strings.validparentheses;
+package algoexpert.leetcode.stack.validparentheses;
 
 import java.util.HashMap;
 
