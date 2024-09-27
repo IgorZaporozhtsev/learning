@@ -5,6 +5,7 @@ public class TestingDuckCode {
         Duck mallardDuk = new MallardDuk();
         mallardDuk.setFlyBehavior(new FlyWithWings());
         mallardDuk.setQuackBehavior(new Quack());
+
         mallardDuk.performQuack();
         mallardDuk.performFly();
         mallardDuk.display();
