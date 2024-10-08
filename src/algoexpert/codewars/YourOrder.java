@@ -1,13 +1,11 @@
 package algoexpert.codewars;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class YourOrder {
     public static void main(String[] args) {
-        System.out.println(order("is2 Thi1s T4est 3a"));
+        System.out.println(order2("is2 Thi1s T4est 3a"));
     }
 
 
@@ -29,6 +27,8 @@ public class YourOrder {
         }
 
         List<Map.Entry<Integer, String>> list = map.entrySet().stream()
+                //(c1, c2) -> c1.getKey().compareTo(c2.getKey()
+                //Comparator.comparing(Map.Entry::getKey)
                 .sorted(Map.Entry.comparingByKey())
                 .toList();
 
@@ -36,5 +36,11 @@ public class YourOrder {
         return list.stream()
                 .map(Map.Entry::getValue)
                 .collect(Collectors.joining(" "));
+    }
+
+    public static String order2(String words){
+        return Arrays.stream(words.split(" "))
+                .sorted(Comparator.comparing(s -> Integer.valueOf(s.replaceAll("\\D", ""))))
+                .reduce((a, b) -> a + " " + b).get();
     }
 }
