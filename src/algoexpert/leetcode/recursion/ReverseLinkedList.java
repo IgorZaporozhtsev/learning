@@ -57,6 +57,6 @@ public class ReverseLinkedList {
             sb.append("null");
             return sb.toString();
         }
-  }
+    }
 
 }
