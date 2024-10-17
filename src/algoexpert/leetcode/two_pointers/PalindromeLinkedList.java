@@ -46,7 +46,6 @@ public class PalindromeLinkedList {
         }
         return true;
     }
-
 }
 
 class ListNode {
