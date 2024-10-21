@@ -18,10 +18,10 @@ public class BinaryTreePostOrderTraversal {
                                 new TreeNode(9, null, null),
                                 null)));
 
-        System.out.println(preorderTraversal(root));
+        System.out.println(postOrderTraversal(root));
     }
 
-    public static List<Integer> preorderTraversal(TreeNode root) {
+    public static List<Integer> postOrderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         traversal(root, list);
         return list;
