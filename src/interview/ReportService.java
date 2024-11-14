@@ -12,7 +12,7 @@ public class ReportService {
        Key is Developer Name;
        Value is List of Tasks Title assigned to Developer
        Note: also handle non-consistent cases:
-       Developer::getId not present in Assignment::getDeveloperId - add Developer::getName with Collections::emptyListg
+       Developer::getId not present in Assignment::getDeveloperId - add Developer::getName with Collections::emptyList
        Assignment::getTaskId not present in Task::getId - Skip Assignment
     */
 
@@ -21,19 +21,19 @@ public class ReportService {
         Developer developer1 = new Developer(1, "Petro");
         Developer developer2 = new Developer(2, "Mik");
         Developer developer3 = new Developer(3, "Jonson");
+        Developer developer4 = new Developer(4, "Simons");
 
         developers.add(developer1);
         developers.add(developer2);
         developers.add(developer3);
+        developers.add(developer4);
 
         List<Task> tasks = new ArrayList<>();
-        Task task1 = new Task(1, "Hello1");
         Task task2 = new Task(2, "Hello2");
         Task task3 = new Task(3, "Hello3");
         Task task4 = new Task(4, "Hello4");
         Task task5 = new Task(5, "Hello5");
 
-        tasks.add(task1);
         tasks.add(task2);
         tasks.add(task3);
         tasks.add(task4);
@@ -43,12 +43,11 @@ public class ReportService {
         Assignment assignment1 = new Assignment(1,1);
         Assignment assignment2 = new Assignment(2,1);
         Assignment assignment3 = new Assignment(3,2);
-        Assignment assignment4 = new Assignment(4,3);
+
 
         assignments.add(assignment1);
         assignments.add(assignment2);
         assignments.add(assignment3);
-        assignments.add(assignment4);
 
         Map<String, List<String>> report = report(tasks, developers, assignments);
         System.out.println(report);
@@ -74,16 +73,15 @@ public class ReportService {
         }
 
         for (Assignment assignment : assignments) {
-            int taskId = assignment.taskId;
-            int developerId = assignment.developerId;
+            int taskId = assignment.getTaskId();
+            int developerId = assignment.getDeveloperId();
 
             String developerName = mapDevelopers.get(developerId);
             String taskName = mapTasks.get(taskId);
 
-
-            report.get(developerName).add(taskName);
-
-
+            if (developerName != null && taskName != null) {
+                report.get(developerName).add(taskName);
+            }
         }
 
         return report;
@@ -148,6 +146,22 @@ public class ReportService {
 
         public Assignment(int taskId, int developerId) {
             this.taskId = taskId;
+            this.developerId = developerId;
+        }
+
+        public int getTaskId() {
+            return taskId;
+        }
+
+        public void setTaskId(int taskId) {
+            this.taskId = taskId;
+        }
+
+        public int getDeveloperId() {
+            return developerId;
+        }
+
+        public void setDeveloperId(int developerId) {
             this.developerId = developerId;
         }
     }
