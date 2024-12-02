@@ -5,10 +5,10 @@ public class DecoratorMain {
         //Its behave like linked list that bind different decorators
 
         //1-st approach
-        Beverage darkRoast = new DarkRoast(Size.TALL);
-        darkRoast = new Mocha(darkRoast);
-        darkRoast = new Soy(darkRoast);
-        darkRoast = new Whip(darkRoast);
+//        Beverage darkRoast = new DarkRoast(Size.TALL);
+//        darkRoast = new Mocha(darkRoast);
+//        darkRoast = new Soy(darkRoast);
+//        darkRoast = new Whip(darkRoast);
 
 
     /*
@@ -22,7 +22,7 @@ public class DecoratorMain {
     */
 
         //3-rd approach
-//        Beverage darkRoast = new Whip(new Soy(new Mocha(new DarkRoast(Size.TALL))));
+        Beverage darkRoast = new Whip(new Soy(new Mocha(new DarkRoast(Size.TALL))));
 
         double beverageCost = darkRoast.cost();
         String description = darkRoast.getDescription();
@@ -95,7 +95,6 @@ class Mocha extends CondimentDecorator {
     public Size getSize() {
         return beverage.getSize();
     }
-
 
     @Override
     public double cost() {
