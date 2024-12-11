@@ -1,6 +1,4 @@
-package algoexpert.leetcode.slide_window;
-
-import java.util.Arrays;
+package algoexpert.leetcode.arrays.two_pointers;
 
 public class BestTimetoBuyandSellStock_121 {
     //121. Best Time to Buy and Sell Stock
@@ -17,14 +15,13 @@ public class BestTimetoBuyandSellStock_121 {
         int right = 1;
         int maxProfit = 0;
         while (prices.length > right){
-            if (prices[right] < prices[left]){
-                left=right;
+            if (prices[left] > prices[right]){
+                left = right;
             } else {
                 int profit = prices[right] - prices[left];
                 right++;
-                if (profit > maxProfit){
-                    maxProfit = profit;
-                }
+                maxProfit = Math.max(profit, maxProfit);
+
             }
         }
         return maxProfit;
