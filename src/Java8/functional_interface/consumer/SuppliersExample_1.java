@@ -1,4 +1,4 @@
-package Java8.functional_interface.supplier;
+package Java8.functional_interface.consumer;
 
 import Java8.prepared_data.Hobby;
 import Java8.prepared_data.HobbyType;

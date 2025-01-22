@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static Java8.functional_interface.supplier.SuppliersExample_1.generatePersonStream;
+import static Java8.functional_interface.consumer.SuppliersExample_1.generatePersonStream;
 
 public class FunctionExample_1 {
     public static void main(String[] args) {

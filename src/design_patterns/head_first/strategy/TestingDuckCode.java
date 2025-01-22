@@ -16,7 +16,6 @@ public class TestingDuckCode {
         modelDuck.performFly();
         modelDuck.performQuack();
         modelDuck.display();
-
     }
 }
 
