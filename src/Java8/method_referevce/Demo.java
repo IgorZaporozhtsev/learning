@@ -74,7 +74,7 @@ class User{
     }
 
     public int getMiddleAge(User user){
-        return this.getAge() + user.getAge() /2;
+        return this.getAge() + user.getAge() / 2;
     }
 
     public boolean isAdult(){
