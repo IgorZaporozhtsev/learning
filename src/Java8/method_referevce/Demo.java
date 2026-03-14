@@ -1,24 +1,45 @@
 package Java8.method_referevce;
 
-import Java8.pluralsight_courses.FromCollectionstoStreamsinJava8UsingLambdaExpressions.comparator.Comparator;
-
-import java.io.IOException;
+import java.util.List;
 import java.util.function.*;
+import java.util.stream.Stream;
 
 public class Demo {
 
     public static void main(String[] args) {
-        User user = new User(19);
+	    User user = new User(19);
+
+	    //2. Reference to an instance method of a particular object
+	    Predicate<User> predicate1 = u-> user.isAdult(u);//lambda
+	    Predicate<User> predicate2 = user::isAdult;//method reference
+
+	    //use-case use for comparison
+	    // admin — фіксований receiver, кожен user зі стріму — аргумент
+	    // має сенс тільки якщо логіка залежить від стану receiver'а:
+	    //instance::method потрібен коли метод використовує this (стан конкретного об'єкта тобто receiver'а)
+
+	    List<User> users = List.of(new User(15), new User(25), new User(17));
+	    User admin = new User(14);
+	    List<User> youngers = users.stream()
+		    .filter(admin::isYoungerThan) // Якщо true → залишаємо в результаті, якщо false → відкидаємо.
+		    .toList();
+
+	    //3. Reference to an instance method of an arbitrary object of a particular type
+	    Predicate<User> predicate3 = user1 -> user1.isAdult(); //lambda
+	    Predicate<User> predicate4 = User::isAdult; //передаш мені юзера потім як this у реалізації lambda
+	    Predicate<User> isReadyToWorkPredicate = u -> u.isReadyToWork(21); //can not use method reference, cause signature different with Predicate#test
+
+        boolean isAdult = predicate3.test(user);
+
+	    // Predicate<User> //how it works: you passed me stream of user instances then filter out each user by calling isAdult with type User
+	    //User u -> u.isAdult() - Java підставляє кожен елемент стріму (u) як this для методу isAdult().
+
+	    //use-case filter
+	    List<User> adultsMR2 = Stream.of(user)
+		    .filter(User::isAdult) // Якщо true → залишаємо в результаті, якщо false → відкидаємо.
+		    .toList();
 
 
-        Predicate<User> isAdultPredicate2 = user::isAdult; //user pass as method argument
-
-        //User#isAdult has same signature with Predicate#test
-        Predicate<User> isAdultPredicate = User::isAdult; //can use method reference
-        Predicate<User> isReadyToWorkPredicate = u -> u.isReadyToWork(21); //can not use method reference, cause signature different with Predicate#test
-
-
-        boolean isAdult = isAdultPredicate.test(user);
         boolean isReadyToWork = isReadyToWorkPredicate.test(user);
 
         System.out.println(isAdult);
@@ -31,7 +52,7 @@ public class Demo {
     public static void foo() {
         User user = new User(19);
 
-        //Reference to an Instance Method of a Particular Object
+	    //Reference to an Instance Method of a Particular Object
         Supplier<Integer> ageSupplier = user::getAge;
         ageSupplier.get();
 
@@ -59,34 +80,6 @@ public class Demo {
         System.out.println(helloSuBi); //"ello"
 
 
-    }
-}
-
-class User{
-    private final int age;
-
-    public User(int age) {
-        this.age = age;
-    }
-
-    public int getAge() {
-        return this.age;
-    }
-
-    public int getMiddleAge(User user){
-        return this.getAge() + user.getAge() / 2;
-    }
-
-    public boolean isAdult(){
-        return age > 18;
-    }
-
-    public boolean isReadyToWork(int age){
-        return age > 21;
-    }
-
-    public boolean isAdult(User user) {
-        return user.getAge() < 18;
     }
 }
 
