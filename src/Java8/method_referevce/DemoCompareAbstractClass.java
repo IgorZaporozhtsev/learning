@@ -25,5 +25,9 @@ public class DemoCompareAbstractClass {
 
 		Method[] declaredMethods = DemoCompareAbstractClass.class.getDeclaredMethods();
 		System.out.println(Arrays.toString(declaredMethods));
+
+		/*
+		* також інструкція байткоду буди мати invokeDynamic коли буде використовуватись лабда
+		* */
 	}
 }
