@@ -3,7 +3,6 @@ package Java8.method_referevce;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.function.Consumer;
-import java.util.function.UnaryOperator;
 
 public class DemoCompareMethodReference {
 
