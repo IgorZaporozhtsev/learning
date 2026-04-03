@@ -8,8 +8,9 @@ public class DemoCompareMethodReference {
 
 	public static void main(String[] args) {
 		//коли lambda - гегерує private static void Java8.method_referevce.DemoCompareMethodReference.lambda$main$0(java.lang.String)]
-		//коли method reference - не генерує
-		Consumer<String> stringConsumer = s -> System.out.println(s);
+		// (INVOKEDYNAMIC посилається на lambda$main$0 новостворений метод)
+		//коли method reference - не генерує (INVOKEDYNAMIC посилається на println)
+		Consumer<String> stringConsumer = System.out::println;
 
 		stringConsumer.accept("Hello");
 
