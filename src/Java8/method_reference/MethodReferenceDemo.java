@@ -1,4 +1,4 @@
-package Java8.method_referevce;
+package Java8.method_reference;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.IntSupplier;

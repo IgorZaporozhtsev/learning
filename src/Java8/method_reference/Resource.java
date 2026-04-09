@@ -1,4 +1,4 @@
-package Java8.method_referevce;
+package Java8.method_reference;
 
 public class Resource {
 	String type;

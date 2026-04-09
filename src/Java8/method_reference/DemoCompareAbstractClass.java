@@ -1,4 +1,4 @@
-package Java8.method_referevce;
+package Java8.method_reference;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;

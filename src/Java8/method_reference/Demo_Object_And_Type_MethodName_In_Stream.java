@@ -1,8 +1,8 @@
-package Java8.method_referevce;
+package Java8.method_reference;
 
 import java.util.Optional;
 
-public class Demo_Object_And_Type_MethodName {
+public class Demo_Object_And_Type_MethodName_In_Stream {
 
 	public static void main(String[] args) {
 
