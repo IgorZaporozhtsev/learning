@@ -5,7 +5,9 @@ import java.util.function.*;
 import java.util.stream.Stream;
 
 public class Demo {
-
+	/**
+	 * See use case with Object::instanceMethodName {@link AccessControlService#getAvailableResources}
+	 * */
     public static void main(String[] args) {
 	    User user = new User(19);
 
@@ -14,7 +16,7 @@ public class Demo {
 	    Predicate<User> predicate2 = user::isAdult;//method reference
 
 	    //use-case use for comparison
-	    // admin — фіксований receiver, кожен user зі стріму — аргумент
+	    // admin — фіксований receiver(одержувач), кожен user зі стріму — аргумент
 	    // має сенс тільки якщо логіка залежить від стану receiver'а:
 	    //instance::method потрібен коли метод використовує this (стан конкретного об'єкта тобто receiver'а)
 

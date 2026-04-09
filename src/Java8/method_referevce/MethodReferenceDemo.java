@@ -7,24 +7,27 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class MethodReferenceDemo {
-
+	/**
+	 * See {@link Demo#main}
+	 * */
 	public static void main(String[] args) {
-		ThreadLocalRandom random = ThreadLocalRandom.current();
 
 		//1. Reference to a static method
-		// ContainingClass::staticMethodName
+		// Class::staticMethodName
 		// Person::compareByAge
 		//MethodReferencesExamples::appendStrings
 		IntUnaryOperator abs = Math::abs;
 
 		//2. Reference to an instance method of a particular object
-		// containingObject::instanceMethodName
+		// Object::instanceMethodName
 		// myComparisonProvider::compareByName
 		//myApp::appendStrings2
+
+		ThreadLocalRandom random = ThreadLocalRandom.current();
 		IntSupplier intSupplier = random::nextInt;
 
-		//3. Reference to an instance method of an arbitrary object of a particular type
-		// ContainingType::methodName
+		//3. Reference to an instance method of an arbitrary(довільний) object of a particular type
+		// Type::methodName
 		// String::compareToIgnoreCase
 		//String::concat
 		String hello = "Hello";
