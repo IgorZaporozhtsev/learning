@@ -3,6 +3,8 @@ package design_patterns.head_first.observer.observer_task_1;
 import design_patterns.head_first.observer.observer_task_1.solution.OrderObserver;
 
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
 public class OrderService {
 
