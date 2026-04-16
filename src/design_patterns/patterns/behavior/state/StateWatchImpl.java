@@ -111,6 +111,11 @@ class Watch{
        this.mode = clockMode;
     }
 
+
+	/**
+	 * {@link interview.object_oriented_design.watch_state_pattern.Demo_design_watch}
+	 * */
+	//instanceof - smell code
     public void switcher(){
         if (mode instanceof Cloak){
             setClockMode(new StopWatch());
